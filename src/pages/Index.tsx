@@ -66,40 +66,18 @@ export default function Index() {
           </div>
 
           <div className="flex items-center gap-3">
-            {/* API toggle */}
-            <button
-              onClick={() => setApiMode(!apiMode)}
-              className={`p-2 rounded-md border transition-colors ${apiMode ? 'border-added/50 bg-added/10 text-added' : 'border-border bg-surface text-muted-foreground hover:text-foreground'}`}
-              title="Toggle API mode"
-            >
-              <Globe className="w-4 h-4" />
-            </button>
-
-            {apiMode ? (
-              <div className="flex items-center gap-2">
-                <input
-                  placeholder="Source API URL"
-                  value={apiUrls.source}
-                  onChange={e => setApiUrls({ ...apiUrls, source: e.target.value })}
-                  className="bg-surface border border-border rounded-md px-3 py-1.5 text-sm text-secondary-foreground placeholder:text-muted-foreground w-52 focus:outline-none focus:ring-1 focus:ring-ring"
-                />
-                <input
-                  placeholder="Dest API URL"
-                  value={apiUrls.dest}
-                  onChange={e => setApiUrls({ ...apiUrls, dest: e.target.value })}
-                  className="bg-surface border border-border rounded-md px-3 py-1.5 text-sm text-secondary-foreground placeholder:text-muted-foreground w-52 focus:outline-none focus:ring-1 focus:ring-ring"
-                />
-              </div>
-            ) : (
-              <div className="flex items-center bg-surface border border-border rounded-md p-1">
-                <SelectLabel label="Source" value={selection.source} options={[...SOURCE_OPTIONS]}
-                  onChange={v => setSelection({ ...selection, source: v })} />
-                <div className="w-[1px] h-4 bg-border mx-2" />
-                <SelectLabel label="Dest" value={selection.dest} options={[...DEST_OPTIONS]}
-                  onChange={v => setSelection({ ...selection, dest: v })} />
-              </div>
-            )}
-
+            <input
+              placeholder="Source config URL (leave empty for mock G4)"
+              value={apiUrls.source}
+              onChange={e => setApiUrls({ ...apiUrls, source: e.target.value })}
+              className="bg-surface border border-border rounded-md px-3 py-1.5 text-sm text-secondary-foreground placeholder:text-muted-foreground w-64 focus:outline-none focus:ring-1 focus:ring-ring"
+            />
+            <input
+              placeholder="Dest config URL (leave empty for mock Prod)"
+              value={apiUrls.dest}
+              onChange={e => setApiUrls({ ...apiUrls, dest: e.target.value })}
+              className="bg-surface border border-border rounded-md px-3 py-1.5 text-sm text-secondary-foreground placeholder:text-muted-foreground w-64 focus:outline-none focus:ring-1 focus:ring-ring"
+            />
             <button
               onClick={handleCompare}
               disabled={loading}
