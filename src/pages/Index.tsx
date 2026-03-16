@@ -185,12 +185,13 @@ function DiffRow({ node, index }: { node: ConfigNode; index: number }) {
 
 
 
-function StatBadge({ label, count, color = 'text-foreground' }: { label: string; count: number; color?: string }) {
+function StatBadge({ label, count, color = 'text-foreground', active, onClick }: { label: string; count: number; color?: string; active: boolean; onClick: () => void }) {
   return (
-    <div className="flex items-center gap-2 px-3 py-1.5 bg-surface border border-border rounded-md">
+    <button onClick={onClick}
+      className={`flex items-center gap-2 px-3 py-1.5 border rounded-md transition-colors cursor-pointer ${active ? 'bg-muted border-ring' : 'bg-surface border-border hover:border-muted-foreground'}`}>
       <span className="text-xs text-muted-foreground">{label}</span>
       <span className={`text-sm font-semibold font-mono ${color}`}>{count}</span>
-    </div>
+    </button>
   );
 }
 
