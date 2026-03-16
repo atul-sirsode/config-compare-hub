@@ -1,20 +1,25 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRightLeft, RefreshCw, CheckCircle2, AlertCircle, Search, Filter, Download, Globe } from 'lucide-react';
+import { ArrowRightLeft, RefreshCw, CheckCircle2, AlertCircle, Search, Filter, Download } from 'lucide-react';
 import { diffConfigs, filterNodes, type ConfigNode, type FilterType } from '@/lib/configDiff';
 import { fetchConfigs } from '@/services/configService';
-
-const SOURCE_OPTIONS = ['G1', 'G4'] as const;
-const DEST_OPTIONS = ['PreProd', 'Prod'] as const;
 
 export default function Index() {
   const [loading, setLoading] = useState(false);
   const [diffData, setDiffData] = useState<ConfigNode[]>([]);
-  const [selection, setSelection] = useState({ source: 'G4', dest: 'Prod' });
   const [filter, setFilter] = useState<FilterType>('all');
   const [search, setSearch] = useState('');
-  const [apiMode, setApiMode] = useState(false);
   const [apiUrls, setApiUrls] = useState({ source: '', dest: '' });
+
+  const sourceLabel = useMemo(() => {
+    if (!apiUrls.source) return 'Source';
+    try { const parts = new URL(apiUrls.source).pathname.split('/'); return parts[parts.length - 1] || 'Source'; } catch { return apiUrls.source.split('/').pop() || 'Source'; }
+  }, [apiUrls.source]);
+
+  const destLabel = useMemo(() => {
+    if (!apiUrls.dest) return 'Destination';
+    try { const parts = new URL(apiUrls.dest).pathname.split('/'); return parts[parts.length - 1] || 'Destination'; } catch { return apiUrls.dest.split('/').pop() || 'Destination'; }
+  }, [apiUrls.dest]);
 
   const filtered = useMemo(() => filterNodes(diffData, filter, search), [diffData, filter, search]);
 
@@ -28,11 +33,8 @@ export default function Index() {
   const handleCompare = async () => {
     setLoading(true);
     try {
-      const { sourceJson, destJson } = await fetchConfigs(
-        apiMode ? 'api' : 'local',
-        selection,
-        apiUrls
-      );
+      const mode = (apiUrls.source && apiUrls.dest) ? 'api' : 'local';
+      const { sourceJson, destJson } = await fetchConfigs(mode, { source: 'G4', dest: 'Prod' }, apiUrls);
       setDiffData(diffConfigs(sourceJson, destJson));
     } catch (err) {
       console.error('Compare failed:', err);
@@ -64,40 +66,18 @@ export default function Index() {
           </div>
 
           <div className="flex items-center gap-3">
-            {/* API toggle */}
-            <button
-              onClick={() => setApiMode(!apiMode)}
-              className={`p-2 rounded-md border transition-colors ${apiMode ? 'border-added/50 bg-added/10 text-added' : 'border-border bg-surface text-muted-foreground hover:text-foreground'}`}
-              title="Toggle API mode"
-            >
-              <Globe className="w-4 h-4" />
-            </button>
-
-            {apiMode ? (
-              <div className="flex items-center gap-2">
-                <input
-                  placeholder="Source API URL"
-                  value={apiUrls.source}
-                  onChange={e => setApiUrls({ ...apiUrls, source: e.target.value })}
-                  className="bg-surface border border-border rounded-md px-3 py-1.5 text-sm text-secondary-foreground placeholder:text-muted-foreground w-52 focus:outline-none focus:ring-1 focus:ring-ring"
-                />
-                <input
-                  placeholder="Dest API URL"
-                  value={apiUrls.dest}
-                  onChange={e => setApiUrls({ ...apiUrls, dest: e.target.value })}
-                  className="bg-surface border border-border rounded-md px-3 py-1.5 text-sm text-secondary-foreground placeholder:text-muted-foreground w-52 focus:outline-none focus:ring-1 focus:ring-ring"
-                />
-              </div>
-            ) : (
-              <div className="flex items-center bg-surface border border-border rounded-md p-1">
-                <SelectLabel label="Source" value={selection.source} options={[...SOURCE_OPTIONS]}
-                  onChange={v => setSelection({ ...selection, source: v })} />
-                <div className="w-[1px] h-4 bg-border mx-2" />
-                <SelectLabel label="Dest" value={selection.dest} options={[...DEST_OPTIONS]}
-                  onChange={v => setSelection({ ...selection, dest: v })} />
-              </div>
-            )}
-
+            <input
+              placeholder="Source config URL (leave empty for mock G4)"
+              value={apiUrls.source}
+              onChange={e => setApiUrls({ ...apiUrls, source: e.target.value })}
+              className="bg-surface border border-border rounded-md px-3 py-1.5 text-sm text-secondary-foreground placeholder:text-muted-foreground w-64 focus:outline-none focus:ring-1 focus:ring-ring"
+            />
+            <input
+              placeholder="Dest config URL (leave empty for mock Prod)"
+              value={apiUrls.dest}
+              onChange={e => setApiUrls({ ...apiUrls, dest: e.target.value })}
+              className="bg-surface border border-border rounded-md px-3 py-1.5 text-sm text-secondary-foreground placeholder:text-muted-foreground w-64 focus:outline-none focus:ring-1 focus:ring-ring"
+            />
             <button
               onClick={handleCompare}
               disabled={loading}
@@ -151,11 +131,11 @@ export default function Index() {
             <div className="px-6 py-3">Property Key</div>
             <div className="px-6 py-3 border-l border-border flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-added" />
-              {apiMode ? 'Source' : selection.source}
+              {sourceLabel}
             </div>
             <div className="px-6 py-3 border-l border-border flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-modified" />
-              {apiMode ? 'Destination' : selection.dest}
+              {destLabel}
             </div>
           </div>
 
@@ -210,20 +190,8 @@ function DiffRow({ node, index }: { node: ConfigNode; index: number }) {
   );
 }
 
-function SelectLabel({ label, value, options, onChange }: { label: string; value: string; options: string[]; onChange: (v: string) => void }) {
-  return (
-    <div className="flex items-center gap-2 px-2">
-      <span className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider">{label}</span>
-      <select
-        value={value}
-        onChange={e => onChange(e.target.value)}
-        className="bg-transparent text-sm text-secondary-foreground focus:outline-none cursor-pointer font-medium"
-      >
-        {options.map(opt => <option key={opt} value={opt} className="bg-surface text-foreground">{opt}</option>)}
-      </select>
-    </div>
-  );
-}
+
+
 
 function StatBadge({ label, count, color = 'text-foreground' }: { label: string; count: number; color?: string }) {
   return (
