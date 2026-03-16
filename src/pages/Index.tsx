@@ -2,15 +2,10 @@ import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRightLeft, RefreshCw, CheckCircle2, AlertCircle, Search, Filter, Download, Globe } from 'lucide-react';
 import { diffConfigs, filterNodes, type ConfigNode, type FilterType } from '@/lib/configDiff';
-import yaml from 'js-yaml';
+import { fetchConfigs } from '@/services/configService';
 
 const SOURCE_OPTIONS = ['G1', 'G4'] as const;
 const DEST_OPTIONS = ['PreProd', 'Prod'] as const;
-
-const FILE_MAP: Record<string, string> = {
-  G4: '/data/plp-md-web-G4.yml',
-  Prod: '/data/plp-md-web-Production.yml',
-};
 
 export default function Index() {
   const [loading, setLoading] = useState(false);
