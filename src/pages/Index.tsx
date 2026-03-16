@@ -35,9 +35,7 @@ export default function Index() {
 
   const parseJsonLenient = (text: string) => {
     // Strip trailing commas before ] or }
-    let cleaned = text.replace(/,\s*([}\]])/g, '$1');
-    // Fix bare keys without values in objects: "key"\n} → "key": ""\n}
-    cleaned = cleaned.replace(/"([^"]+)"\s*\n(\s*})/g, '"$1": ""\n$2');
+    const cleaned = text.replace(/,\s*([}\]])/g, '$1');
     return JSON.parse(cleaned);
   };
 
