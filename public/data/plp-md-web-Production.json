@@ -1,0 +1,1235 @@
+{
+  "Serilog": {
+    "Using": [],
+    "MinimumLevel": {
+      "Default": "Information",
+      "Override": {
+          "Web": "Information",
+          "SystemResultModule": "Error",
+          "DomainSupport": "Error",
+          "Dell": "Warning",
+          "Dse": "Warning",
+          "EasyNetQ": "Warning",
+          "Microsoft": "Warning",
+          "RabbitMQ": "Warning",
+          "Steeltoe": "Warning",
+          "System": "Warning"
+      }
+    }
+  },
+  "DependencyEndpoints": {
+    "EnsightenMarketingUrl": "//nexus.dell.com/dell/marketingdev/Bootstrap.js",
+    "EnsightenUrl": "//nexus.dell.com/dell/stpfooterdev/Bootstrap.js",
+    "AdobeBundleUrl": "https://www.dell.com/cdn/assets/tnt/adobebundle/shop/bundle_toggle.min.js",
+    "AssetBaseUrl": "https://www.dell.com/cdn/assets/csb/md/systemresultsux/bundles/{0}",
+    "UserStateApiUrl": "//www-wip.dell.com/csbapi/{0}/personalization/getuserstate/",
+    "GlobalJSBundleUrl": "https://www.dell.com/cdn/assets/shop/scripts/global-bundle.min.227e46e62e99a671d6d127a7d3f5484c.js",
+    "GlobalCSSBundleUrl": "https://www.dell.com/cdn/assets/shop/styles/global-bundle.min.3e0e34c144dc1fd9eb15f1bea251dd23.css",
+    "PersonalizationMessagingApiUrl": "https://product-offers.production.p13n.dell.com/public/{0}",
+    "SiteWideMessageBarUrl": "https://masthead-md-prod.p15.pcf.dell.com/shopapi/{0}-{1}/messagebar/shop/Shop",
+    "MemberCookieWriterUrl": "https://afcs.dellcdn.com/csb/shared/js/member-cookie.min.e7f5f005a87b4a26e01e6e147251cedf.js",
+    "VocaasMicroSurveyApiUrl": "https://vocaas.vocaasnp.pcf.dell.com/en/js/microsurvey",
+    "BoomerangUrl": "https://www.dell.com/cdn/assets/boomerang/sit/boomerang-csb-full.min.js",
+    "DellDesignSystemIconFontUrl": "https://www.dell.com/dds/assets/icons/2.8.1/dds-icons.woff2",
+    "DellDesignSystemIconRobotoFontUrl": "https://www.dell.com/dds/assets/fonts/2.137.1/Roboto-Medium_l.woff2",
+    "DellDesignSystemIconRobotoNormalFontUrl": "https://www.dell.com/cdn/assets/fonts/roboto-normal.woff2",
+    "GlobalDDSComponentJsBundleUrl": "https://dds.dell.com/components/2.33.0/js/index.min.js",
+    "GlobalDDSFontBundleUrl": "https://www.dell.com/cdn/assets/shop/styles/global-fonts.min.e60b64122fd0da6a762b2a8a507abcd7.css",
+    "GlobalDDSRebootBundleUrl": "https://www.dell.com/cdn/assets/shop/styles/global-reboot.min.e8deef0d3aa544dc5f18c09c20343a8d.css",
+    "GlobalFontsBasePath": "https://www.dell.com/dds/assets/fonts/2.137.1/",
+    "GlobalSmartModel": "https://www.dell.com/cdn/assets/shop/styles/global-smart-modal.min.8b24262db7d0d86a063f41a4f8f3dca4.css",
+    "GlobalSmartPopover": "https://www.dell.com/cdn/assets/shop/styles/global-smart-popover.min.f28396c8de547746b9776d68758dc7fa.css",
+    "EnableResourceHttpPush": true,
+    "HmcBundleJsUrl": "https://afcs.dellcdn.com/cdn/assets/csb/md/helpmechoose/bundles/1.0.0.728/scripts/helpmechoose.min.0750caf3ad9a09bce4cd8d1e4bbedf5b.js",
+    "HmcBundleCssUrl": "https://www.dell.com/cdn/assets/csb/helpmechoose/bundles/styles/helpmechoose.min.68c7b434c60172d56e7cee5177626ab0.css",
+    "GlobalEsmBundleTracingJsUrl": "https://afcs.dellcdn.com/shop/scripts/tracing-client.min.29eaef8c53a4875a6e69b7a7dd914085.js",
+    "TechNoteApiUrl": "https://plp-md-web-prod.p15.pcf.dell.com/shopapi/plp/v1/technote/{0}-{1}/{2}/{3}/",
+    "ResourcesWithAbsolutePathForHttpPush": [
+      {
+        "Path": "https://www.dell.com/cdn/assets/shop/styles/global-bundle.min.3e0e34c144dc1fd9eb15f1bea251dd23.css",
+        "Rel": "preload stylesheet",
+        "As": "style"
+      }
+    ],
+    "GlobalBundlePushResources": [
+      {
+        "Path": "https://www.dell.com/cdn/assets/shop/styles/global-fonts.min.e60b64122fd0da6a762b2a8a507abcd7.css",
+        "Rel": "preload stylesheet",
+        "As": "style"
+      },
+      {
+        "Path": "https://www.dell.com/cdn/assets/shop/styles/global-reboot.min.e8deef0d3aa544dc5f18c09c20343a8d.css",
+        "Rel": "preload stylesheet",
+        "As": "style"
+      }
+    ],
+    "GlobalFontsDefaultLatinFiles": [ "Roboto-Regular_l.woff2", "Roboto-Light_l.woff2" ],
+    "GlobalFonts": [
+      {
+        "Languages": "pl,hu,ro,tr",
+        "FileNames": "Roboto-Light_l-e.woff2,Roboto-Regular_l-e.woff2"
+      },
+      {
+        "Languages": "ru",
+        "FileNames": "Roboto-Light_c.woff2,Roboto-Light_c-e.woff2,Roboto-Regular_c.woff2,Roboto-Regular_c-e.woff2"
+      }
+    ],
+    "SelfHostingResources": [
+      {
+        "Path": "https://www.dell.com/cdn/assets/tnt/adobebundle/shop/bundle_toggle.min.js",
+        "Rel": "preload",
+        "As": "script"
+      }
+    ],
+    "GetGraphqlCatalogUrl": "https://plp-md-assembler-prod.p15.pcf.dell.com/csbapi/admin/graphql/getcatalog/{0}/{1}/{2}/all/{3}?preview={4}"
+  },
+  "cassandra": {
+    "nodes": [
+      "10.130.0.133",
+      "10.130.0.136",
+      "10.130.0.99",
+      "10.130.0.140",
+      "10.130.0.139",
+      "10.130.0.141",
+      "10.208.0.110",
+      "10.208.0.112",
+      "10.208.0.111",
+      "10.208.0.114",
+      "10.208.0.115",
+      "10.208.0.113"
+    ],
+    "keyspacesbycountry": {
+      "global": "plp_disc_ccs_01_prod"
+    },
+    "port":9142,
+    "username": "{cipher}37dea6e9fb79d93c4b94b992b8dd17b5afc6f41de064b4d15527ab60e3c5e9e2cba7cab31f5cb03c780572fba5897fc9",
+    "password": "{cipher}b8e4c6c9717ea3e6439b663ce70a163e8c024cc8c6f7aa0dda589c5c601da59d0c09d3b766c469624b0857f81176cb7d",
+    "roleName": "{cipher}94c0dcd053d5027497a73924c5b0ecc9b5d3a9b38daa90a16a23909006c7ac44",
+    "usedHostsPerRemoteDc": 3,
+    "defaultDc": "PC1",
+    "secondDc": "S3B",
+    "localDelay": "50",
+    "remoteDelay": "200",
+    "retries": "2",
+    "ConnectionBaseDelay": "50",
+    "ConnectionMaxDelay": "1000",
+    "ConsistencyLevel": "LocalOne"
+  },
+  "GlobalOverrideOptions": {
+    "SegmentDisplayNameCountryOverride": [
+      "nz",
+      "my",
+      "sg",
+      "cn",
+      "hk",
+      "kr",
+      "tw",
+      "br",
+      "at",
+      "de",
+      "ch",
+      "fr",
+      "be",
+      "nl",
+      "ie",
+      "uk",
+      "dk",
+      "it",
+      "no",
+      "es",
+      "se",
+      "ca",
+      "jp",
+      "us",
+      "au"
+    ]
+  },
+  "AnavMfeSettings": {
+    "AnavMfeTemplateV1": "leftanavlinkgrey",
+    "AnavMfeTemplateV2": "leftanavlinkdefault"
+  },
+  "BrandCompare": {
+    "Category": {
+      "laptops": {"latitude-laptops":"latitude-product-line","inspiron-laptops":"inspiron-product-line","xps-laptops":"xps-product-line","g-series":"g-series-product-line","precision-laptops":"precision-product-line","alienware-laptops":"alienware-product-line","rugged-laptops":"latitude-rugged-product-line","chromebook-laptops":"chrome-enterprise-product-line"},
+      "desktops": {"optiplex-desktops":"optiplex-product-line","inspiron-desktops":"inspiron-product-line","precision-desktops":"precision-product-line","alienware-desktops":"alienware-product-line","xps-desktops":"xps-product-line"}
+    }
+  },
+  "FeatureToggles": {
+    "AnavMFELiveCallForTier1": [
+      "all"
+    ],
+    "DisplayBodyHiding": [
+      "us-dhs-19",
+      "us-bsd-04",
+      "us-eep-6099",
+      "us-eep-2236"
+    ],
+    "EnableNewRelicClientMonitoring": [
+      "all"
+    ],
+    "SyncViewModelWithCmsContent": [
+      "all"
+    ],
+    "EnableBreadcrumbSchema": [
+      "all"
+    ],
+    "EnableImageLazyLoad": [
+      "all"
+    ],
+    "EnableSiteWideMessageBar": [
+      "all"
+    ],
+    "EnableBanner": [
+      "all"
+    ],
+    "EnableTier1Page": [
+      "all"
+    ],
+    "EnableCampaignTreatment": [
+      "all"
+    ],
+    "EnablePersonalization": [
+      "false"
+    ],
+    "AppendRefinementNameToPageTitle": [
+      "all"
+    ],
+    "QueryAllRefinements": [
+      "all"
+    ],
+    "EnableCompareDrawer": [
+      "all"
+    ],
+    "PremierCompareDrawer": [
+      "all"
+    ],
+    "LogPerformance": [
+      "all"
+    ],
+    "DisplayRatings": [
+      "uk-dhs-ukdhs1",
+      "fr-dhs-frdhs1",
+      "nz-dhs-nzdhs1",
+      "my-dhs-mydhs1",
+      "ap-dhs-audhs1",
+      "de-dhs-dedhs1",
+      "sg-dhs-sgdhs1",
+      "br-dhs-brdhs1",
+      "br-bsd-brbsdt1"
+    ],
+    "DisplayReviews": [
+      "False"
+    ],
+    "EnableMicroSurvey": [
+      "all"
+    ],
+    "HideDisabledRefinements": [
+      "all"
+    ],
+    "ShowExceptionDetails": [
+      "true"
+    ],
+    "ShowRefinementResultCount": [
+      "all"
+    ],
+    "DynamicRefinementOrdering": [
+      "all"
+    ],
+    "OptimizedMultiSelect": [
+      "all"
+    ],
+    "ShowApplyFilter": [
+      "all"
+    ],
+    "EnablePremierSiteWideBanner": [
+      "all"
+    ],
+    "ErrorMessageTemporaryInvalid": [
+      "all"
+    ],
+    "ErrorMessageNotAvailable": [
+      "all"
+    ],
+    "ErrorMessage": [
+      "all"
+    ],
+    "DisplayShippingLeadTime": [
+      "all"
+    ],
+    "PremierSortByLowestPrice": [
+      "all"
+    ],
+    "PremierSortByHighestPrice": [
+      "all"
+    ],
+    "PremierSortByReviews": [
+      "false"
+    ],
+    "PremierSortByShippingLeadTime": [
+      "all"
+    ],
+    "PremierSortByRatings": [
+      "false"
+    ],
+    "SegmentSelector": [
+      "in-dhs-indhs1",
+      "in-bsd-inbsdt1"
+    ],
+    "MinMaxPriceRange": [
+      "us-dhs-19",
+      "us-bsd-04",
+      "br-dhs-brdhs1",
+      "br-bsd-brbsdt1",
+      "us-eep-6099",
+      "us-eep-2236",
+      "ca-dhs-cadhs1"
+    ],
+    "ScrollToTop": [
+      "all"
+    ],
+    "LogFullSearchResponse": [
+      "all"
+    ],
+    "StickyAnav": [
+      "false"
+    ],
+    "StickyView": [
+      "false"
+    ],
+    "srAnavPopoverInfo": [ "all" ],
+    "PremierProductCountAfterRefinement": [ "all", "us-exclude", "ca-exclude" ],
+    "PremierAppliedRefinementOrdering": [ "all" ],
+    "PremierApplyFilter": [ "all" ],
+    "PremierMinMaxPriceRange": [ "false" ],
+    "GlassboxErrorMessage": [ "all" ],
+    "PremierSeriesDisplay": [ "all" ],
+    "SeriesDisplay": [ "all" ],
+    "RefinementLighteningIcon": [ "all" ],
+    "RefinementInfoIcon": [ "all" ],
+    "DisplayMerchandizingV2": {
+      "Transactional": [ "all" ],
+      "Premier": [ "us", "au", "ca" ]
+    },
+    "ErrorMessageAppliedRefinementsNotSelected": [ "all" ],
+    "ErrorMessageOCResultCountMismatch": [ "all" ],
+    "HideRefinerTransactional": [ "all" ],
+    "HideRefinementTransactional": [ "all" ],
+    "HideRefinerPremier": [ "all" ],
+    "HideRefinementPremier": [ "all" ],
+    "PremierErrorMessage": [ "all" ],
+    "EnableConfiguratorCache": [ "all" ],
+    "PremierAppliedRefinementStatusMismatch": [ "all" ],
+    "PremierInvalidRefinementsErrorMessage": [ "all" ],
+    "UberErrorMessage": [ "all" ],
+    "PremierTier1SystemResultPage": [
+      "false"
+    ],
+    "SharedScriptCrossoriginEnabled": [
+      "au-bsd-rc"
+    ],
+    "PremierSegmentOverride": [ "all" ],
+    "ValidateSystemCatResultVMExpiry": [ "false" ],
+    "RetainSortBy": [ "all" ],
+    "UpdateMobileFacets": [
+      "cn-bsd-cnbsd1",
+      "jp-bsd-jpbsd1",
+      "in-bsd-inbsdt1",
+      "de-bsd-debsdt1",
+      "fr-bsd-frbsdt1",
+      "se-bsd-sebsdt1",
+      "es-bsd-esbsdt1",
+      "ch-bsd-chbsdt1",
+      "my-bsd-mybsd1",
+      "nl-bsd-nlbsdt1",
+      "br-bsd-brbsdt1",
+      "at-bsd-atbsdt1",
+      "be-bsd-bebsdt1",
+      "dk-bsd-dkbsdt1",
+      "it-bsd-itbsdt1",
+      "no-bsd-nobsdt1",
+      "pl-bsd-plbsdt1",
+      "tw-bsd-twbsd1",
+      "kr-bsd-krbsd1"
+    ],
+    "EnableHideFacetSection":[
+      "uk-bsd-ukbsdt1",
+      "us-bsd-04",
+      "US-CNSR",
+    ],
+    "CustomPillsFacetSection":[
+      "all"
+    ],
+    "HideSelectedFacetSection":[ "all" ],
+    "AnavTransparency": [ "all" ],
+    "RefactoredAnavJsEnabled": [ "all" ],
+    "FacetsOnSrPage": [ "all" ],
+    "RedirectToUberHomePage": [
+      "all"
+    ],
+    "DDSEnabled": [
+      "all",
+      "rc-all-exclude"
+    ],
+    "AccessibilityBirdSeed": {
+      "Transactional": [ "us" ],
+      "Premier": [ "au" ]
+    },
+    "PremierHideResultInfo": [
+      "false"
+    ],
+    "PremierCatalogCountryRedirectToUS": [ "false" ],
+    "ConvergedCompareDrawerForTransactional": [
+      "all"
+    ],
+    "SelfHostingResourceForPush": [
+      "all"
+    ],
+    "DynamicMobileRefinementCountUpdate": [
+      "us-bsd-rc",
+      "ca-bsd-rc"
+    ],
+    "UpdateGlobalBundles": [ "all" ],
+    "LogRefinementInfoWarning": [ "us" ],
+    "MobileRefinementsClearAll": [ "false" ],
+    "RefinementGrouping": [ "all" ],
+    "PremierAgreementMCKeys": [ "false" ],
+    "ImageObjectSchema": [
+      "uk-bsd-ukbsdt1",
+      "ca-bsd-cabsdt1",
+      "br-bsd-brbsdt1",
+      "uk-bsd-rc",
+      "nz-bsd-rc"
+    ],
+    "ScrStickyAnav": [
+      "false"
+    ],
+    "EnableBannerImgLeftAlign": [
+      "false"
+    ],
+    "EnableJavaScriptLazyLoad": [
+      "false"
+    ],
+    "ProductStackTwoDotOneEndpointEnabled": [
+      "all"
+    ],
+    "EnableSmartModalCSS": [
+      "all"
+    ],
+    "EnableAnavResponsiveScroll": [
+      "all",
+    ],
+    "EnableBannerRecipeC": [
+      "false"
+    ],
+    "EnableSystemResultPartialVmRefresh": {
+      "Transactional": [ "all" , "fr-exclude" ],
+      "Premier": [ "false" ]
+    },
+    "EnablePlpPartialVmRefresh": {
+      "Transactional": [ "all" ],
+      "Premier": [ "all" ]
+    },
+    "EnableSystemResultPaginationPartialVmRefresh": {
+      "Transactional": [ "all" , "ca-exclude" ],
+      "Premier": [ "false" ]
+    },
+    "EnablePlpPaginationPartialVmRefresh": {
+      "Transactional": [ "all", "ca-exclude"  ],
+      "Premier": [ "all" ]
+    },
+    "UseDataUnderstandingSearchApi": {
+      "Transactional": [
+        "au-bsd-aubsd1",
+        "ie-bsd-iebsdt1",
+        "my-bsd-mybsd1",
+        "nz-bsd-nzbsd1",
+        "sg-bsd-sgbsd1",
+        "uk-bsd-ukbsdt1",
+        "us-bsd-04",
+        "ca-bsd-cabsdt1",
+        "hk-bsd-hkbsd1"
+      ],
+      "Premier": [ "false" ]
+    },
+    "ApplyLowestPriceSortAlgorithm": {
+      "Transactional": [
+        "au-bsd-aubsd1",
+        "ie-bsd-iebsdt1",
+        "hk-bsd-hkbsd1",
+        "my-bsd-mybsd1",
+        "nz-bsd-nzbsd1",
+        "sg-bsd-sgbsd1",
+        "uk-bsd-ukbsdt1",
+        "us-bsd-04",
+        "ca-bsd-cabsdt1"
+       ],
+      "Premier": [ "false" ]
+    },
+    "EnableSRAnavPartialRefresh": {
+      "Transactional": [
+        "all"
+      ],
+      "Premier": [ "false" ]
+    },
+    "EnableSRAnavPartialRefreshForMobile": {
+       "Transactional": [
+        "all"
+      ],
+      "Premier": [ "false" ]
+    },
+    "EnablePlpAnavPartialRefresh": {
+      "Transactional": [
+        "all"
+      ],
+      "Premier": [ "all" ]
+    },
+    "EnablePlpAnavPartialRefreshForMobile": {
+       "Transactional": [
+        "all"
+      ],
+      "Premier": [ "all" ]
+    },
+    "HideVariantStackBadge": {
+      "Transactional": [ "all", "ca-exclude", "uk-exclude" ],
+      "Premier": [ "false" ]
+    },
+    "EnableCompareDrawerForPlp": {
+      "Transactional": [ "all" ],
+      "Premier": [ "all" ]
+    },
+    "EnablePlpAnavPartialRefreshForDesktop": {
+      "Transactional": [ "all" ],
+      "Premier": [ "all" ]
+    },
+    "EnableBrandCompare": {
+      "Transactional": {
+        "all": "6",
+        "ca-exclude"
+      },
+      "Premier": {
+        "false": ""
+      },
+   },
+    "ShowVariantStackBadge": {
+      "Transactional": [ "all" ],
+      "Premier": [ "false" ]
+    },
+    "ShowVariantStackNewBadge": {
+      "Transactional": [ "all","ca-exclude" ],
+      "Premier": [ "false" ]
+    },
+    "ShowVariantStackBestSellerBadge": {
+      "Transactional": [ "all","ca-exclude" ],
+      "Premier": [ "false" ]
+    },
+    "ShowVariantStackTemporaryOutOfStockBadge": {
+      "Transactional": [ "all","ca-exclude" ],
+      "Premier": [ "false" ]
+    },
+     "ShowAnavBanner": {
+      "Transactional": [ "all","in-exclude" ],
+      "Premier": [ "all" ]
+    },
+    "EnableRefinementCategorizationForNonPlp": {
+      "Transactional": [ "false" ],
+      "Premier": [ "all" ]
+    },
+    "EnableHeroBannerCTA": {
+      "Transactional": [ "all" ],
+      "Premier": [ "false" ]
+    },
+    "EnableVariantPriceCacheBuild": [
+      "all"
+    ],
+    "EnableGpStoreForUnifiedMastheadFooter":[
+      "all"
+    ],
+    "EnableGpStoreForUnifiedMastheadFooterNonPlp":[
+      "all"
+    ],
+    "MarketCatalogTreeEnabled": [
+      "all"
+    ],
+    "EnableCategoryStripBackgroundColor": {
+      "Transactional": [ "all" ],
+      "Premier": [ "false" ]
+    },
+    "ShowRecommendationModule": {
+      "Transactional": [ "all" ],
+      "Premier": [ "false" ]
+    },
+    "EnableCompareDrawerLiveApi":{
+      "Transactional": [ "all" ],
+      "Premier": [ "false" ]
+    },
+    "PlpCategoryStrip": {
+      "Transactional": [ "all" ],
+      "Premier": [ "all" ]
+    },
+    "EnableModernSearchFallback": {
+      "Transactional": [ "all" ],
+      "Premier": [ "all" ]
+    },
+    "DisplayStaticResultsErrorPage": {
+      "Transactional": [ "all" ],
+      "Premier": [ "all" ]
+    },
+    "ModernSearchFallbackOptions": {
+      "CacheMinutes": "15"
+    },
+    "EnableVariantStackNewEndpoint": [
+      "all"
+    ],
+    "IncludeBannerValidation": [
+      "false"
+    ],
+    "AdobeBodyHiding": [
+      "all"
+    ],
+    "HideAnavHMC": {
+      "Transactional": [ "false" ],
+      "Premier": [ "false" ]
+    },
+    "EnableExternalServicesParallelRun": [
+      "all"
+    ],
+    "HideStaticPageErrorDetails": [
+      "false"
+    ],
+    "ShowPremierSiteWideBannerOnTop": [
+      "false"
+    ],
+    "ShowPremierSiteWideBannerOnVS": [
+      "false"
+    ]
+  },
+  "PremierSystemResultsPages": [ "au","ca","us","th","in","sg","my","nz","jp","uk","de","fr","cn","hk","kr","tw","ie","es","ch","at","nl","it","pl","dk","be","za","se","no","br","mx","ar","cl","co","pe","pa","lu","gr","pt","fi","ru","sk","cz","ed","ec","cr","uy","tt","bb","jm","pr","bm","ni","an","gt","sv","hn","do","gy","bz","aw","py","ky","bo","lc","ve","sr","tc","bs", "dz" ],
+  "RestrictSystemResultsPages": [ "false" ],
+  "PageCacheSettings": {
+    "br": "cache-maxage=15s",
+    "jp": "cache-maxage=15s",
+    "de": "cache-maxage=15s",
+    "fr": "cache-maxage=15s",
+    "uk": "cache-maxage=15s",
+    "ca": "cache-maxage=15s",
+    "us": "cache-maxage=15s",
+    "au": "cache-maxage=15s"
+  },
+  "VerifyTargetAudience": [ "false" ],
+  "CustomFieldList": {
+    "CustomFields": {
+      "SystemCategoryResultPageTitleFormat": {
+        "default": "{0} {1}",
+        "en-us-dhs": "{0} {1}",
+        "fr-ed-dhs": "{1} {0}",
+        "fr-ch-bsd": "{1} {0}",
+        "sv-se-bsd": "{1} {0}",
+        "de-at-bsd": "{1} {0}",
+        "fr-ga-bsd": "{1} {0}",
+        "de-ch-dhs": "{1} {0}",
+        "de-at-dhs": "{1} {0}",
+        "fr-dz-dhs": "{1} {0}",
+        "fr-fr-bsd": "{1} {0}",
+        "fr-fr-dhs": "{1} {0}",
+        "pt-pt-bsd": "{1} {0}",
+        "pt-pt-dhs": "{1} {0}",
+        "fr-ma-bsd": "{1} {0}",
+        "fr-cg-bsd": "{1} {0}",
+        "fr-ca-dhs": "{1} {0}",
+        "fr-cg-dhs": "{1} {0}",
+        "fr-be-bsd": "{1} {0}",
+        "de-ch-bsd": "{1} {0}",
+        "fr-sn-dhs": "{1} {0}",
+        "fr-hr-bsd": "{1} {0}",
+        "fr-ed-bsd": "{1} {0}",
+        "fr-sn-bsd": "{1} {0}",
+        "fr-ma-dhs": "{1} {0}",
+        "pt-br-bsd": "{1} {0}",
+        "pt-br-dhs": "{1} {0}",
+        "fr-ga-dhs": "{1} {0}",
+        "fr-tn-dhs": "{1} {0}",
+        "fr-ch-dhs": "{1} {0}",
+        "fr-cd-bsd": "{1} {0}",
+        "de-de-dhs": "{1} {0}",
+        "fr-tn-bsd": "{1} {0}",
+        "de-de-bsd": "{1} {0}",
+        "fr-hr-dhs": "{1} {0}",
+        "sv-se-dhs": "{1} {0}",
+        "fr-cd-dhs": "{1} {0}",
+        "fr-be-dhs": "{1} {0}",
+        "fr-dz-bsd": "{1} {0}",
+        "fr-ca-bsd": "{1} {0}",
+        "en-au-dhs": "{1}",
+        "en-au-bsd": "{1}",
+        "en-in-dhs": "{0} {1}",
+        "en-in-bsd": "{0} {1}",
+        "en-my-dhs": "{1}",
+        "en-my-bsd": "{1}",
+        "en-nz-dhs": "{1}",
+        "en-nz-bsd": "{1}",
+        "en-sg-dhs": "{1}",
+        "en-sg-bsd": "{1}",
+        "ja-jp-dhs": "{1}",
+        "ja-jp-bsd": "{1}",
+        "ko-kr-dhs": "{1}",
+        "ko-kr-bsd": "{1}",
+        "zh-hk-dhs": "{1}",
+        "zh-hk-bsd": "{1}",
+        "zh-tw-dhs": "{1}",
+        "zh-tw-bsd": "{1}",
+        "en-hk-dhs": "{1}",
+        "en-hk-bsd": "{1}"
+      },
+      "ProductStackTemplateName": {
+        "default": "dellcom-system-results-2button-special-offer-collapsed-spec-stack",
+        "en-us-bsd": "dellcom-system-results-2button-special-offer-collapsed-spec-stack"
+      },
+      "ProductStackV3TemplateName": {
+        "default": "premier-system-results"
+      },
+      "RecommendationModuleProductStackTemplate":{
+        "default":"dellcom-offer-stack-recommendations"
+      },
+      "RecommendationModulePremierProductStackTemplate":{
+        "default":"dellcom-offer-stack-recommendations"
+      },
+      "RecommendationModelPremierNoShopperProductStackTemplate":{
+        "default":"dellcom-offer-stack-recommendations"
+      },
+      "VariantStackTheme":{
+        "default":"PLP2.0"
+      },
+      "DefaultSorting": {
+        "default": "price-ascending"
+      },
+      "DefaultSortingCategoryAndSubCategory": {
+        "default": "[{'DefaultSortBy':'ShippingLeadTime-ascending','CategoryList':''}]",
+        "en-in-dhs": "[{'DefaultSortBy':'ShippingLeadTime-ascending','CategoryList':'laptops'},{'DefaultSortBy':'price-descending','CategoryList':'vostro-laptops'},{'DefaultSortBy':'sort-relevance','CategoryList':'desktops'},{'DefaultSortBy':'price-descending','CategoryList':'alienware-desktops'}]"
+      },
+      "PremierDefaultSorting": {
+        "default": "sort-relevance"
+      },
+      "InvalidRefinementLastRefreshTimeSpan": {
+        "default": "1"
+      },
+      "MaxRefreshTimeSpanForRefinement": {
+        "default": "750"
+      },
+      "PersonalizationId": {
+        "default": "p13n_system_cat_mv"
+      },
+      "EnterpriseSuperCategoryId": {
+        "default": "enterprise-products"
+      },
+      "SearchApiMultiSelectResultOptions": {
+        "default": "{'EnableRefinerMultiSelect':'true','EnableRefinerMultiSelect_2':'false','EnableRefinerMultiSelect_3':'true'}"
+      },
+      "ProductsShowCountValue": {
+        "default": "12",
+        "en-us-dhs": "24",
+        "en-us-bsd": "24",
+        "en-us-bsd-rc": "24",
+        "en-us-eep": "24"
+      },
+      "IntelUpSellRefinerType": {
+        "default": "Processor"
+      },
+      "ParentCategoryRegex": {
+        "default": "^(?!-)(?!.*--)[A-Za-z0-9-]+(?<!-)$"
+      },
+      "SubCategoryRegex": {
+        "default": "^(?!-)(?!.*--)[A-Za-z0-9-]+(?<!-)$"
+      },
+      "RefinementRegex": {
+        "default": "^((\\d?)|(([-+]?\\d+\\.?\\d*)|([-+]?\\d*\\.?\\d+))|(([-+]?\\d+\\.?\\d*\\,\\ ?)*([-+]?\\d+\\.?\\d*))|(([-+]?\\d*\\.?\\d+\\,\\ ?)*([-+]?\\d*\\.?\\d+))|(([-+]?\\d+\\.?\\d*\\,\\ ?)*([-+]?\\d*\\.?\\d+))|(([-+]?\\d*\\.?\\d+\\,\\ ?)*([-+]?\\d+\\.?\\d*)))$"
+      },
+      "PremierRefinementRegex": {
+        "default": "^((\\d+~\\d+,?)+)$"
+      },
+      "ExperimentId": {
+        "default": "System Results Price Min Max version-1"
+      },
+      "AllowedSortByOptions": {
+        "default": "price-ascending,price-descending,ratingaverage-descending,numberofreviews-descending,sort-relevance,ShippingLeadTime-ascending"
+      },
+      "SkipAttributeMicroSurvey": {
+        "default": "country,language,segment,customerset,vocaascategorypath"
+      },
+      "EnterpriseCategoryAndSuperCategoryMap": {
+        "default": "[{'CategoryId':'servers','SuperCategoryId':'enterprise-products'},{'CategoryId':'storage-products','SuperCategoryId':'enterprise-products'},{'CategoryId':'networking-products','SuperCategoryId':'enterprise-products'},{'CategoryId':'hyper-converged-infrastructure','SuperCategoryId':'enterprise-products'}]"
+      },
+      "RefinementInfoLinkTarget": {
+        "default": "_blank"
+      },
+      "PremierNoShopperUsers": {
+        "default": "Shopper No Price,ShopperNoPrice"
+      },
+      "NoShoppersSortByOptions": {
+        "default": "sort-relevance,ShippingLeadTime-ascending"
+      },
+      "NoShopperProductStackV3TemplateName": {
+        "default": "premier-system-results-shopper-no-price"
+      },
+      "NoShopperRefiners": {
+        "default": "price"
+      },
+      "ValidDisplayTypes": {
+        "default": "Ratings-1,Ratings-2,Ratings-3,Ratings-4,Lightning"
+      },
+      "MaxLifeSpanOfSysCatResultVM": {
+        "default": "168"
+      },
+      "AccessibilityBirdSeedAnchor": {
+        "default": "<a href=\"{0}\" aria-describedby=\"{1}\" aria-label=\"{2}\" class=\"{3}\">{4}</a>"
+      },
+      "AccessibilityBirdSeedLink": {
+        "default": "shop_pcf_accessibility_aria_link_"
+      },
+      "PremierMetaDataAppNameForIsgCategories": {
+        "default": "isg-systemresults"
+      },
+      "PremierMetaDataAppNameForCsgCategories": {
+        "default": "csg-systemresults"
+      },
+      "VariantResultsTestCategories": {
+        "en-us-bsd":"laptops,latitude-laptops,vostro-laptops,inspiron-laptops,xps-laptops",
+        "en-us-dhs":"laptops,latitude-laptops,vostro-laptops,inspiron-laptops,xps-laptops"
+      },
+      "VariantResultsTestCookieName": {
+        "default": "BrandVariant_SR"
+      },
+      "VariantResultsTestSpecsRefinerIds": {
+        "default": "1234,4567,8912"
+      },
+      "AnavDDSStyleVersion": {
+        "default": "2"
+      },
+      "PremierCountryLanguageOverrideToSearchApi": {
+        "default": "",
+        "en-pa-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-au-bsd-rc1515828": "{'Country':'us','Language': null}",
+        "en-mx-bsd-rc1390514": "{'Country': null,'Language':'en'}",
+        "en-ec-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-tt-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-bb-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-cr-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-jm-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-pr-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-bm-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-ni-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-an-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-gt-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-sv-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-hn-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-do-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-gy-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-bz-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-aw-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-py-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-uy-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-ky-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-bo-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-lc-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-ve-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-sr-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-tc-bsd-rc": "{'Country':'us','Language':'en'}",
+        "en-bs-bsd-rc": "{'Country':'us','Language':'en'}"
+      },
+      "AbsoluteUrlRegex": {
+        "default": "^(([a-zA-Z])+([:]))|([\\/\\/]).*"
+      },
+      "DDSResourcePath": {
+        "default": "/css/dds.min.css"
+      },
+      "NonDDSResourcePath": {
+        "default": "/css/site.min.css"
+      },
+      "SuperCategoryPageSortByOptions": {
+        "default": "sort-relevance,price-ascending,price-descending,ratingaverage-descending"
+      },
+      "SuperCategoryPageDefaultSorting": {
+        "default": "sort-relevance"
+      },
+      "VariantStackTemplateName": {
+        "default": "dellcom-system-results-variant-stack-vertical"
+      },
+      "SuperCategoryTabInfo": {
+        "default": "[{'everyday':'42723'},{'everyday-home':'42724'},{'everyday-business':'42725'},{'performance':'42726'},{'gaming':'42727'}]",
+         "en-us-bsd": "[{'laptops_everyday':'42723'},{'laptops_everyday-home':'42724'},{'laptops_everyday-business':'42725'},{'laptops_performance':'42726'},{'laptops_gaming':'42727'},{'desktops_everyday':'43149'},{'desktops_performance':'43150'},{'desktops_gaming':'43151'}]"
+      },
+       "PlpAnavGrouping": {
+        "default": "[{'laptops_all-products':'false'},{'laptops_everyday':'false'},{'laptops_performance':'false'},{'laptops_gaming':'false'},{'desktops_all-products':'false'},{'desktops_everyday':'false'},{'desktops_performance':'false'},{'desktops_gaming':'false'}, {'laptops_premier':'false'},{'desktops_premier':'false'}]",
+         "en-us-bsd": "[{'laptops_all-products':'true'},{'laptops_everyday':'true'},{'laptops_performance':'true'},{'laptops_gaming':'true'},{'desktops_all-products':'true'},{'desktops_everyday':'false'},{'desktops_performance':'true'},{'desktops_gaming':'true'}]",
+         "en-uk-bsd": "[{'laptops_all-products':'true'},{'laptops_everyday':'true'},{'laptops_performance':'true'},{'laptops_gaming':'true'},{'desktops_all-products':'true'},{'desktops_everyday':'false'},{'desktops_performance':'true'},{'desktops_gaming':'true'}]",
+         "en-us-bsd-rc": "[{'laptops_all-products_premier':'true'},{'laptops_premier':'true'},{'desktops_premier':'false'}]"
+      },
+      "SearchApiParallelOptions": {
+        "default": "{'ApplyParallelSearchCall':'false','SearchMaxItems':'0'}",
+        "en-us-bsd": "{'ApplyParallelSearchCall':'true','SearchMaxItems':'250'}",
+        "en-us-dhs": "{'ApplyParallelSearchCall':'true','SearchMaxItems':'250'}"
+      },
+      "IgnoreAnavPurposedCategories": {
+        "default": "laptops,desktops"
+      },
+      "PremierMarketingCampaignCodes": {
+        "default": "31295062,31297099,31270186,31575393,31303417,31314502,31545128,31472059,31472500,31641483,31285051,31363472,31414872,31301275,31474852,31780410,32030630,23705685,25181842,26217334,27555096,28263971,28789577,28712839,29254368,29192650,30355443,30299195,29249412,29233340,29779899,31989229,26207131,26027288,25294027,23899159,23763473,31298224,31931938"
+      },
+      "PremierB2BBanner": {
+        "default": "[{'Category':'laptop','Position':'3', 'AnimationFiltersCount': 2},{'Category':'desktop','Position':'3'},{'Category':'workstations','Position':'4'}]"
+      },
+      "SuperCategoryBannerRecipe": {
+        "default": "B"
+      },
+      "HeroBannerCTARefinement": {
+        "default": "",
+        "en-uk-bsd": "latitude-product-line,dell-pro-product-line"
+      },
+      "PremierVariantStackTemplateName": {
+        "default": "premier-system-results-variant-stack-vertical"
+      },
+      "PremierNoShopperVariantStackTemplateName": {
+        "default": "premier-system-results-variant-stack-vertical-shopper-no-price"
+      },
+      "SuperCategoryPremierSortByOptions": {
+        "default": "sort-relevance,price-ascending,price-descending"
+      },
+      "SuperCategoryPremierNoShopperSortByOptions": {
+        "default": "sort-relevance,ratingaverage-descending"
+      },
+      "SuperCategoryPremierDefaultSorting": {
+        "default": "sort-relevance"
+      },
+      "EnableBrandSimplification": {
+        "default": "",
+        "en-us-bsd": "[{'Category':'laptops','Brands':'laptops,everyday,dell-laptops,dell-pro-laptops,dell-pro-max-laptops'}]"
+      },
+      "CategoryTabsReconcile": {
+        "default": "[{'TabId':'everyday','Productlines':'dell-product-line,xps-product-line,inspiron-product-line,education-product-line,vostro-product-line'},{'TabId':'business','Productlines':'dell-pro-product-line,latitude-product-line,latitude-rugged-product-line,optiplex-product-line'},{'TabId':'performance','Productlines':'dell-pro-max-product-line,precision-product-line'},{'TabId':'gaming','Productlines':'g-series-product-line,alienware-product-line'}]",
+        "default-premier": "[{'TabId':'everyday','Productlines':'dell-product-line,xps-product-line,inspiron-product-line,education-product-line,vostro-product-line'},{'TabId':'business','Productlines':'dell-pro-product-line,latitude-product-line,latitude-rugged-product-line,optiplex-product-line'},{'TabId':'performance','Productlines':'dell-pro-max-product-line,precision-product-line'},{'TabId':'gaming','Productlines':'g-series-product-line,alienware-product-line'}]"
+      },
+      "ShowcaseBannerDisplayPosition": {
+        "default": "-1",
+        "en-us-bsd": "4",
+        "en-uk-bsd": "3"
+      },
+       "RecommendationDisplayPosition": {
+        "default": "2"
+      },
+      "AnavHmcKeys": {
+        "default": "[{'product-line':'shop_pcf_hmc_{0}-brand-awareness_title|hmc-{0}-brand-awareness-modal'}]",
+      },
+      "PremierAnavHmcKeys": {
+        "default": "[{'product-line':'shop_pcf_hmc_{0}-brand-awareness-premier_title|{0}-brand-awareness-premier'}]",
+      },
+      "HMCBaseUrlTesting": {
+        "default": ""
+      },
+      "BannerHmcKeys": {
+        "default": "[{'all-laptops':'shop_hmc_all-laptops-brand-awareness_title|shop_hmc_all-laptops-brand-awareness-modal_title|all-laptops-brand-awareness'},
+        {'everyday-laptops':'shop_hmc_dell-laptops-brand-awareness_title|shop_hmc_dell-laptops-brand-awareness-modal_title|dell-laptops-brand-awareness'},
+        {'professional-laptops':'shop_hmc_dell-pro-laptops-brand-awareness_title|shop_hmc_dell-pro-laptops-brand-awareness-modal_title|dell-pro-laptops-brand-awareness'},
+        {'performance-laptops':'shop_hmc_dell-pro-max-laptops-brand-awareness_title|shop_hmc_dell-pro-max-laptops-brand-awareness-modal_title|dell-pro-max-laptops-brand-awareness'},
+        {'all-desktops':'shop_hmc_all-desktops-brand-awareness_title|shop_hmc_all-desktops-brand-awareness-modal_title|all-desktops-brand-awareness'},
+        {'everyday-desktops':'shop_hmc_dell-desktops-brand-awareness_title|shop_hmc_dell-desktops-brand-awareness-modal_title|dell-desktops-brand-awareness'},
+        {'professional-desktops':'shop_hmc_dell-pro-desktops-brand-awareness_title|shop_hmc_dell-pro-desktops-brand-awareness-modal_title|dell-pro-desktops-brand-awareness'},
+        {'performance-desktops':'shop_hmc_dell-pro-max-desktops-brand-awareness_title|shop_hmc_dell-pro-max-desktops-brand-awareness-modal_title|dell-pro-max-desktops-brand-awareness'},
+        {'dell-pro-product-line':'shop_hmc_dell-pro-laptops-brand-awareness_title|shop_hmc_dell-pro-laptops-brand-awareness-modal_title|dell-pro-laptops-brand-awareness'},
+        {'dell-product-line':'shop_hmc_dell-desktops-brand-awareness_title|shop_hmc_dell-desktops-brand-awareness-modal_title|dell-desktops-brand-awareness'}]"
+      },
+      "PremierBannerHmcKeys": {
+        "default": "[{'all-laptops':'shop_hmc_all-laptops-brand-awareness-premier_title|shop_hmc_all-laptops-brand-awareness-premier-modal_title|all-laptops-brand-awareness-premier'},
+        {'everyday-laptops':'shop_hmc_dell-laptops-brand-awareness-premier_title|shop_hmc_dell-laptops-brand-awareness-premier-modal_title|dell-laptops-brand-awareness-premier'},
+        {'business-laptops':'shop_hmc_dell-pro-laptops-brand-awareness-premier_title|shop_hmc_dell-pro-laptops-brand-awareness-premier-modal_title|dell-pro-laptops-brand-awareness-premier'},
+        {'performance-laptops':'shop_hmc_dell-pro-max-laptops-brand-awareness-premier_title|shop_hmc_dell-pro-max-laptops-brand-awareness-premier-modal_title|dell-pro-max-laptops-brand-awareness-premier'},
+        {'all-desktops':'shop_hmc_all-desktops-brand-awareness-premier_title|shop_hmc_all-desktops-brand-awareness-premier-modal_title|all-desktops-brand-awareness-premier'},
+        {'everyday-desktops':'shop_hmc_dell-desktops-brand-awareness-premier_title|shop_hmc_dell-desktops-brand-awareness-premier-modal_title|dell-desktops-brand-awareness-premier'},
+        {'business-desktops':'shop_hmc_dell-pro-desktops-brand-awareness-premier_title|shop_hmc_dell-pro-desktops-brand-awareness-premier-modal_title|dell-pro-desktops-brand-awareness-premier'},
+        {'performance-desktops':'shop_hmc_dell-pro-max-desktops-brand-awareness-premier_title|shop_hmc_dell-pro-max-desktops-brand-awareness-premier-modal_title|dell-pro-max-desktops-brand-awareness-premier'},
+        {'dell-pro-product-line':'shop_hmc_dell-pro-laptops-brand-awareness-premier_title|shop_hmc_dell-pro-laptops-brand-awareness-premier-modal_title|dell-pro-laptops-brand-awareness-premier'},
+        {'dell-product-line':'shop_hmc_dell-desktops-brand-awareness-premier_title|shop_hmc_dell-desktops-brand-awareness-premier-modal_title|dell-desktops-brand-awareness-premier'}]"
+      },
+      "SystemCategoryResultMetaTitleFormat": {
+        "default": "{0} - {1}"
+      },
+      "SystemCategoryResultMetaDescriptionFormat": {
+        "default": "{0} - {1} - {2}"
+      },
+      "SystemCategoryResultMetaKeywordsFormat": {
+        "default": "{0} , {1}"
+      },
+      "ModernSearchFedRestrictionCriteria": {
+        "default": "deboost"
+      },
+      "PremierPricingCacheCooldown": {
+        "default": "300"
+      }
+    }
+  },
+  "AssemblerSettingsClient": {
+    "BaseAddress": "https://plp-md-assembler-prod.p15.pcf.dell.com/csbapi/admin/tool/",
+    "Timeout": "00:00:10"
+  },
+  "ModernSearchClientOptions": {
+     "BaseAddress": "https://spectra.ray.dell.com/searchapi/v1/{0}/{1}/{2}/{3}/productlistingonline",
+     "Timeout": "00:00:10",
+     "Fedcontract": "SearchDCAT"
+  },
+  "ModernAnavSearchClient": {
+    "BaseAddress": "https://anav-web-md-prod.s15.pcf.dell.com/anav/v2/left/api/dds/{0}/{1}/{2}/{3}",
+    "Timeout": "00:00:15",
+    "ClientId": "systems-results",
+    "SuperCategoryClientId": "super-systems-category"
+  },
+  "ModernCommerceVariantStackClient": {
+    "BaseAddress": "https://productstack-md-web-prod.p15.pcf.dell.com/shopapi/product-stack/v5.1/variant-stack-collection/{0}-{1}/{2}/{3}/{4}",
+    "Timeout": "00:02:00"
+  },
+  "ModernOfferStackClient": {
+    "BaseAddress": "https://productstack-md-web-prod.p15.pcf.dell.com/shopapi/product-stack/v3.1/stack-collection/{0}-{1}/{2}/{3}/{4}",
+    "Timeout": "00:02:00"
+  },
+  "CompareDrawerServiceClient": {
+    "BaseAddress": "https://comparedrawer-md-web-prod.s15.pcf.dell.com/shopapi/compare-drawer/{0}/{1}/{2}",
+    "Timeout": "00:00:10"
+  },
+  "UnifiedMastheadServiceClientOptions": {
+    "BaseAddress": "https://www.dell.com/csbapi/masthead/v2/unifiedmasthead/{0}-{1}/premier/header",
+    "Timeout": "00:00:10"
+  },
+  "UnifiedFooterServiceClientOptions": {
+     "BaseAddress": "https://www.dell.com/csbapi/masthead/v2/unifiedmasthead/{0}-{1}/premier/footer",
+     "Timeout": "00:00:10"
+  },
+  "DataApiGraphQlClient": {
+    "BaseAddress": "https://data-api-prod.us.dell.com/dpapi/v1/graphql",
+    "Timeout": "00:00:10"
+  },
+  "BuildPricingCacheClient": {
+    "BaseAddress": "https://plp-md-assembler-prod.p15.pcf.dell.com/shopapi/plp/v1/{0}-{1}/premier/{2}/{3}/{4}/{5}/build",
+    "Timeout": "00:00:10"
+  },
+  "ModernSearchOptions": {
+    "PageSize": "12",
+    "AllVariantPageSize": "100",
+    "CacheMinutes": "15"
+  },
+  "ModernVariantStackRequestOptions": {
+    "CacheMinutes": "15"
+  },
+  "ProductStackHeader": {
+    "AuditHeaders": "Requested,Requested-Count,Found,Found-Count,Inactive,Missingprice,Missingproductdetails,Missingtitle,Not-Found,Not-Found-Count"
+  },
+  "AuthTokenSubscriptionSettings": {
+    "TokenSettings":{
+      "variantStack": {
+        "CacheTimeOutInSecond": 30,
+        "Endpoint": "https://dellidentity-corp.dell.com/di/api/v3/oauth/token",
+        "ClientId": "{cipher}ee01fc1a80158edc515426ec0b1236cee4ff0d503365e72d305c7513750eaa25d5c399161875044b61cf7e17303b5d07d284b9cad2ee0be65f35fab7c785652d",
+        "ClientSecret": "{cipher}537c6ad26f1bd71dab124b1ba0ed83791e64652836621304c19319a7e3dcdead1baeccc14efb3f594354e1a9d38f1e01ab035b36757c4ded0fc46f52041ef4b0787c0e3ac538223b09d2ca5d2f57c0548c8c826f0fdc1e83427afc0338bd45b3f9982cf14ab29fcd811f48fd35d7b2cf"
+      },
+      "graphQl": {
+        "CacheTimeOutInSecond": 30,
+        "Endpoint": "https://dellidentity-corp.dell.com/di/api/v3/oauth/token",
+        "ClientId": "{cipher}ee01fc1a80158edc515426ec0b1236cee4ff0d503365e72d305c7513750eaa25d5c399161875044b61cf7e17303b5d07d284b9cad2ee0be65f35fab7c785652d",
+        "ClientSecret": "{cipher}537c6ad26f1bd71dab124b1ba0ed83791e64652836621304c19319a7e3dcdead1baeccc14efb3f594354e1a9d38f1e01ab035b36757c4ded0fc46f52041ef4b0787c0e3ac538223b09d2ca5d2f57c0548c8c826f0fdc1e83427afc0338bd45b3f9982cf14ab29fcd811f48fd35d7b2cf",
+        "Scope": "datapipelinedataapi.read"
+      },
+      "anavMfeApi": {
+        "CacheTimeOutInSecond": 30,
+        "Endpoint": "https://dellidentity-corp.dell.com/di/api/v3/oauth/token",
+        "ClientId": "{cipher}ee01fc1a80158edc515426ec0b1236cee4ff0d503365e72d305c7513750eaa25d5c399161875044b61cf7e17303b5d07d284b9cad2ee0be65f35fab7c785652d",
+        "ClientSecret": "{cipher}537c6ad26f1bd71dab124b1ba0ed83791e64652836621304c19319a7e3dcdead1baeccc14efb3f594354e1a9d38f1e01ab035b36757c4ded0fc46f52041ef4b0787c0e3ac538223b09d2ca5d2f57c0548c8c826f0fdc1e83427afc0338bd45b3f9982cf14ab29fcd811f48fd35d7b2cf",
+        "Scope": "anav-mfe-api.read"
+      },
+      "modernSearchApi": {
+        "CacheTimeOutInSecond": 30,
+        "Endpoint": "https://dellidentity-corp.dell.com/di/api/v3/oauth/token",
+        "ClientId": "{cipher}ee01fc1a80158edc515426ec0b1236cee4ff0d503365e72d305c7513750eaa25d5c399161875044b61cf7e17303b5d07d284b9cad2ee0be65f35fab7c785652d",
+        "ClientSecret": "{cipher}537c6ad26f1bd71dab124b1ba0ed83791e64652836621304c19319a7e3dcdead1baeccc14efb3f594354e1a9d38f1e01ab035b36757c4ded0fc46f52041ef4b0787c0e3ac538223b09d2ca5d2f57c0548c8c826f0fdc1e83427afc0338bd45b3f9982cf14ab29fcd811f48fd35d7b2cf",
+        "Scope": "spectra.ray.getresults"
+      },
+      "compareDrawerApi": {
+        "CacheTimeOutInSecond": 30,
+        "Endpoint": "https://dellidentity-corp.dell.com/di/api/v3/oauth/token",
+        "ClientId": "{cipher}ee01fc1a80158edc515426ec0b1236cee4ff0d503365e72d305c7513750eaa25d5c399161875044b61cf7e17303b5d07d284b9cad2ee0be65f35fab7c785652d",
+        "ClientSecret": "{cipher}537c6ad26f1bd71dab124b1ba0ed83791e64652836621304c19319a7e3dcdead1baeccc14efb3f594354e1a9d38f1e01ab035b36757c4ded0fc46f52041ef4b0787c0e3ac538223b09d2ca5d2f57c0548c8c826f0fdc1e83427afc0338bd45b3f9982cf14ab29fcd811f48fd35d7b2cf",
+        "Scope": "comparedrawer-mfe-api.read"
+      }
+    }
+  },
+  "PolyPolicies": {
+    "HttpCircuitBreaker": {
+      "DurationOfBreak": "00:00:00",
+      "ExceptionsAllowedBeforeBreaking": 10
+    },
+    "HttpRetry": {
+      "BackoffPower": 2,
+      "Count": 1
+    },
+    "WcfCircuitBreaker": {
+      "DurationOfBreak": "00:01:00",
+      "ExceptionsAllowedBeforeBreaking": 10
+    },
+    "WcfRetry": {
+      "BackoffPower": 2,
+      "Count": 3
+    }
+  },
+  "ExternalDomains": {
+    "Responsive": "www.dell.com"
+  },
+  "Settings": {
+    "AdobeVisitorApiTimeout": 4000,
+    "CacheMinutes": 15,
+    "DynamicTabShowHideCacheDuration": 15,
+    "XssValidationPattern" : "<script.*?>.*?|javascript:|onclick=",
+    "MetricKeys": "country,language,segment,customerset,pagename,channel,waapplicationname,wacontroller,waview,delladvantagelogin,applicationname,ref,categoryid,dfsauthstate,dc,systemresultnum,pagenumber,categorypath,profile_id,environment",
+    "AdditionalMetrics": {
+      "cms": "stp",
+      "module": "md_PLP",
+      "s_account": "dellglobalonlinedev",
+      "prod": "false",
+      "dc": "dell"
+    },
+    "PremierMetricKeys": "country,language,segment,customerset,region,pagename,accessgroupname,b2bflag,catalogcode,convergence,isglobalportal,olr_store,persistence_id,premier_accessgroupid,premier_roleid,premier_rolename,profile_id,profileurlsegment,salessegment,session_id,badgeid,categorypath,waapplicationname,categoryid,requestOrigin,email,applicationname,dellsecpremier,intelupsell",
+    "PremierAdditionalMetrics": {
+      "cms": "stp",
+      "module": "converged_systemresult",
+      "s_account": "dellglobalonlinedev",
+      "prod": "false",
+      "dc": "dell"
+    },
+    "FaqSupportedCategories": {
+      "us": "laptops,desktops",
+      "uk": "laptops",
+      "ca": "laptops,desktops"
+    },
+    "Premier": {
+      "EnablePremierMetricKeys": true
+    },
+    "PreconnectCollection": [
+      "//c.evidon.com",
+      "//l.evidon.com",
+      "//nexus.ensighten.com",
+      "//js-agent.newrelic.com",
+      "//cdn.krxd.net",
+      "//dpm.demdex.net",
+      "//mczbf.com",
+      "//t.myvisualiq.net",
+      "//secure.adnxs.com",
+      "//universal.iper2.com",
+      "//paypal.com",
+      "//paypalobjects.com",
+      "//nexus.dell.com",
+       "//aiq-in.dell.com"
+    ],
+    "DnsPrefetchCollection": [
+      "//c.evidon.com",
+      "//l.evidon.com",
+      "//nexus.ensighten.com",
+      "//js-agent.newrelic.com",
+      "//cdn.krxd.net",
+      "//dpm.demdex.net",
+      "//mczbf.com",
+      "//t.myvisualiq.net",
+      "//secure.adnxs.com",
+      "//universal.iper2.com",
+      "//paypal.com",
+      "//paypalobjects.com"
+    ],
+    "PremierCookieKeys": [ "dais-aspNsId", "dais-s", "dais-sp", "DellCEMSession", "lwprofile", "dais-c", "GAAuth", "GAAnon", "chm:TP", "dais-connectionid", "PremierLwpCache", "Profile", "lwp", "dais-fp2", "s_ppv", "s_hwp", "s_sq", "_cs_s", "_cs_cvars", "eds", "cidlid", "PremierGP", "PremierGPB2B", "dci_jwt" ],
+    "AuthTokenRenewalSchedulerEnabled": false,
+    "PreconnectSelfHostingCollection": [
+      {
+        "url": "https://c.evidon.com",
+        "crossorigin": "false"
+      },
+      {
+        "url": "https://l.evidon.com",
+        "crossorigin": "false"
+      },
+      {
+        "url": "https://nexus.ensighten.com",
+        "crossorigin": "false"
+      },
+      {
+        "url": "https://js-agent.newrelic.com",
+        "crossorigin": "false"
+      },
+      {
+        "url": "https://cdn.krxd.net",
+        "crossorigin": "false"
+      },
+      {
+        "url": "https://dpm.demdex.net",
+        "crossorigin": "true"
+      },
+      {
+        "url": "https://mczbf.com",
+        "crossorigin": "false"
+      },
+      {
+        "url": "https://t.myvisualiq.net",
+        "crossorigin": "false"
+      },
+      {
+        "url": "https://secure.adnxs.com",
+        "crossorigin": "false"
+      },
+      {
+        "url": "https://universal.iper2.com",
+        "crossorigin": "false"
+      },
+      {
+        "url": "https://paypal.com",
+        "crossorigin": "false"
+      },
+      {
+        "url": "https://paypalobjects.com",
+        "crossorigin": "false"
+      },
+      {
+        "url": "https://nexus.dell.com",
+        "crossorigin": "true"
+      },
+      {
+        "url": "https://aiq-in.dell.com",
+        "crossorigin": "true"
+      }
+    ]
+  },
+ "DatabaseCacheSettings":
+    {
+     "SuperCategory": {
+      "TransactionalExpiration": {
+        "Masthead": "15",
+        "MicroContent": "15",
+        "SeoOverride": "15",
+        "Faq":"15",
+        "CompareDrawer": "15"
+        },
+      "PremierExpiration": {
+        "Masthead": "15",
+        "MicroContent": "15",
+        "CompareDrawer": "15",
+        "VariantsPricing": "15"
+        }
+    },
+    "SystemResults": {
+       "TransactionalExpiration": {
+        "Masthead": "0",
+        "MicroContent": "0"
+        },
+       "PremierExpiration": {
+        "Masthead": "0",
+        "MicroContent": "0"
+        }
+    }
+},
+  "TestCasesUrls": {
+    "SkipTest": {
+      "E2E": ["VerifyUberHomePageToPLPPage","ClickAgreementsInPlpPageandVerifyitsLanding","ClickBreadcrumbHomeIconInPlpPageandVerifyitsLanding","VerifyPremier_test","VerifyPremierClickViewDetailsButtonShouldNavigateToProductDetailsPage"],
+      "Functional": ["VerifyProductStackSectionIsDisplayed_SCR","VerifySortByFeatureInDifferentTab","VerifySortByFeatureInTier2","VerifySortByOptions","VerifySortByFeature","VerifySortByFeature_PLP_Premier","VerifyDefaultSortByOption","VerifyResultCountByChangingSortBy","ValidationOfSideWideBarSection_Premier","VerifyRecommendationmodule","ValidationOfSideWideBarSection","VerifyPagination_PLP_Premier","VerifyPagination_SCR","VerifyProductStackSectionIsDisplayed_PLP_Premier","VerifyMetaTagsIsDisplayed_SCR","PageBannerH2Validation_SCR","PageBannerValidation_SCR","ValidateBannerSection","VerifyCompareCheckBoxSection_Premier","ValidateMastheadAndFooterSectionIsDisplayed_SCR_Premier","ValidateFaqSection","ValidateMastheadAndFooterSectionIsDisplayed_SCR","ValidateFaqSectionShowMoreOrLess","BrowseTitleTestValidation_SCR","VerifyCompareCheckBoxSection","ValidateCanonical","VerifyChatDrawerIsDisplayed_SCR","BrowseTitleTestValidation_PLP_Premier","ValidateBreadCrumbsSectionIsDisplaying_SCR_Premier","ValidateTabWhenRefinementSelectionAndClearSelection","ValidateBreadCrumbsSectionIsDisplaying_SCR","ValidateTabWhenApplyingPagination","ValidateTabWhenApplyingSortOptions","VerifyRefinersNameInBannerHeader_Url_AnavPills_Premier","VerifyRefinersNameInBannerHeader_Url_AnavPills","VerifyPremierAnavRefinersSelectionAndClearAll","VerifyAnavViewMore_SCR","VerifyAnavRefinersSelectionAndUncheckSelectedRefiners","VerifyAnavToolTipSelection","VerifyAnavRefinersSelectionAndUncheckSelectedRefiners_PLP_Premier","VerifyAnavRefinersSelectionAndClearAll","VerifyAgreementSection_SCR","VerifyAnavBasicUIFeatures_PLP_Premier","VerifyAnavBasicUIFeatures_SCR","VerifyAnavRefinersCountInProductStack","VerifyAnavRefinersCountInProductStack_Premier","VerifyAnavRefinersMultiSelectionAndUncheckSelectedRefiners"]
+    }
+  }
+}
