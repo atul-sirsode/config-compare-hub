@@ -13,12 +13,12 @@ export default function Index() {
 
   const sourceLabel = useMemo(() => {
     if (!apiUrls.source) return 'Source';
-    try { const parts = new URL(apiUrls.source).pathname.split('/'); return parts[parts.length - 1] || 'Source'; } catch { return apiUrls.source.split('/').pop() || 'Source'; }
+    try { const parts = new URL(apiUrls.source).pathname.split('/').filter(Boolean); return parts[parts.length - 2] || 'Source'; } catch { const parts = apiUrls.source.split('/').filter(Boolean); return parts[parts.length - 2] || 'Source'; }
   }, [apiUrls.source]);
 
   const destLabel = useMemo(() => {
     if (!apiUrls.dest) return 'Destination';
-    try { const parts = new URL(apiUrls.dest).pathname.split('/'); return parts[parts.length - 1] || 'Destination'; } catch { return apiUrls.dest.split('/').pop() || 'Destination'; }
+    try { const parts = new URL(apiUrls.dest).pathname.split('/').filter(Boolean); return parts[parts.length - 2] || 'Destination'; } catch { const parts = apiUrls.dest.split('/').filter(Boolean); return parts[parts.length - 2] || 'Destination'; }
   }, [apiUrls.dest]);
 
   const filtered = useMemo(() => filterNodes(diffData, filter, search), [diffData, filter, search]);
