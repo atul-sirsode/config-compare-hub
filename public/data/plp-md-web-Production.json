@@ -504,12 +504,12 @@
     "EnableBrandCompare": {
       "Transactional": {
         "all": "6",
-        "ca-exclude"
+        "ca-exclude": ""
       },
       "Premier": {
         "false": ""
-      },
-   },
+      }
+    },
     "ShowVariantStackBadge": {
       "Transactional": [ "all" ],
       "Premier": [ "false" ]
