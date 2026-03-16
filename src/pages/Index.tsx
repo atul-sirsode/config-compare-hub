@@ -131,11 +131,11 @@ export default function Index() {
             <div className="px-6 py-3">Property Key</div>
             <div className="px-6 py-3 border-l border-border flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-added" />
-              {apiMode ? 'Source' : selection.source}
+              {sourceLabel}
             </div>
             <div className="px-6 py-3 border-l border-border flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-modified" />
-              {apiMode ? 'Destination' : selection.dest}
+              {destLabel}
             </div>
           </div>
 
