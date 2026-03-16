@@ -32,25 +32,31 @@ export default function Index() {
     missing: diffData.filter(n => n.status === 'missing_source' || n.status === 'missing_dest').length,
   }), [diffData]);
 
+  const parseJsonLenient = (text: string) => {
+    // Strip trailing commas before ] or }
+    const cleaned = text.replace(/,\s*([}\]])/g, '$1');
+    return JSON.parse(cleaned);
+  };
+
   const handleCompare = async () => {
     setLoading(true);
     try {
       let sourceJson: any, destJson: any;
 
       if (apiMode) {
-        const [srcRes, dstRes] = await Promise.all([
-          fetch(apiUrls.source).then(r => r.json()),
-          fetch(apiUrls.dest).then(r => r.json()),
+        const [srcText, dstText] = await Promise.all([
+          fetch(apiUrls.source).then(r => r.text()),
+          fetch(apiUrls.dest).then(r => r.text()),
         ]);
-        sourceJson = srcRes;
-        destJson = dstRes;
+        sourceJson = parseJsonLenient(srcText);
+        destJson = parseJsonLenient(dstText);
       } else {
-        const [srcRes, dstRes] = await Promise.all([
-          FILE_MAP[selection.source] ? fetch(FILE_MAP[selection.source]).then(r => r.json()) : Promise.resolve({}),
-          FILE_MAP[selection.dest] ? fetch(FILE_MAP[selection.dest]).then(r => r.json()) : Promise.resolve({}),
+        const [srcText, dstText] = await Promise.all([
+          FILE_MAP[selection.source] ? fetch(FILE_MAP[selection.source]).then(r => r.text()) : Promise.resolve('{}'),
+          FILE_MAP[selection.dest] ? fetch(FILE_MAP[selection.dest]).then(r => r.text()) : Promise.resolve('{}'),
         ]);
-        sourceJson = srcRes;
-        destJson = dstRes;
+        sourceJson = parseJsonLenient(srcText);
+        destJson = parseJsonLenient(dstText);
       }
 
       setDiffData(diffConfigs(sourceJson, destJson));
