@@ -34,15 +34,11 @@ export default function Index() {
   }), [diffData]);
 
   const parseJsonLenient = (text: string) => {
-    // Fix bare keys without values (e.g. "key" alone in an object) by adding : ""
+    // Strip trailing commas before ] or }
     let cleaned = text.replace(/,\s*([}\]])/g, '$1');
-    // Fix entries like "key"\n} where key has no value
+    // Fix bare keys without values in objects: "key"\n} → "key": ""\n}
     cleaned = cleaned.replace(/"([^"]+)"\s*\n(\s*})/g, '"$1": ""\n$2');
-    try {
-      return JSON5.parse(cleaned);
-    } catch {
-      return JSON.parse(cleaned);
-    }
+    return JSON.parse(cleaned);
   };
 
   const handleCompare = async () => {
