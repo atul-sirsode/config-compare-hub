@@ -190,20 +190,8 @@ function DiffRow({ node, index }: { node: ConfigNode; index: number }) {
   );
 }
 
-function SelectLabel({ label, value, options, onChange }: { label: string; value: string; options: string[]; onChange: (v: string) => void }) {
-  return (
-    <div className="flex items-center gap-2 px-2">
-      <span className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider">{label}</span>
-      <select
-        value={value}
-        onChange={e => onChange(e.target.value)}
-        className="bg-transparent text-sm text-secondary-foreground focus:outline-none cursor-pointer font-medium"
-      >
-        {options.map(opt => <option key={opt} value={opt} className="bg-surface text-foreground">{opt}</option>)}
-      </select>
-    </div>
-  );
-}
+
+
 
 function StatBadge({ label, count, color = 'text-foreground' }: { label: string; count: number; color?: string }) {
   return (
