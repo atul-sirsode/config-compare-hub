@@ -25,33 +25,14 @@ export default function Index() {
     missing: diffData.filter(n => n.status === 'missing_source' || n.status === 'missing_dest').length,
   }), [diffData]);
 
-  const parseContent = (text: string, isYaml: boolean) => {
-    if (isYaml) return yaml.load(text) as any;
-    const cleaned = text.replace(/,\s*([}\]])/g, '$1');
-    return JSON.parse(cleaned);
-  };
-
   const handleCompare = async () => {
     setLoading(true);
     try {
-      let sourceJson: any, destJson: any;
-
-      if (apiMode) {
-        const [srcText, dstText] = await Promise.all([
-          fetch(apiUrls.source).then(r => r.text()),
-          fetch(apiUrls.dest).then(r => r.text()),
-        ]);
-        sourceJson = parseContent(srcText, false);
-        destJson = parseContent(dstText, false);
-      } else {
-        const [srcText, dstText] = await Promise.all([
-          FILE_MAP[selection.source] ? fetch(FILE_MAP[selection.source]).then(r => r.text()) : Promise.resolve(''),
-          FILE_MAP[selection.dest] ? fetch(FILE_MAP[selection.dest]).then(r => r.text()) : Promise.resolve(''),
-        ]);
-        sourceJson = srcText ? parseContent(srcText, true) : {};
-        destJson = dstText ? parseContent(dstText, true) : {};
-      }
-
+      const { sourceJson, destJson } = await fetchConfigs(
+        apiMode ? 'api' : 'local',
+        selection,
+        apiUrls
+      );
       setDiffData(diffConfigs(sourceJson, destJson));
     } catch (err) {
       console.error('Compare failed:', err);
