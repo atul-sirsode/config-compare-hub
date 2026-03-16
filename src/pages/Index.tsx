@@ -33,11 +33,8 @@ export default function Index() {
   const handleCompare = async () => {
     setLoading(true);
     try {
-      const { sourceJson, destJson } = await fetchConfigs(
-        apiMode ? 'api' : 'local',
-        selection,
-        apiUrls
-      );
+      const mode = (apiUrls.source && apiUrls.dest) ? 'api' : 'local';
+      const { sourceJson, destJson } = await fetchConfigs(mode, { source: 'G4', dest: 'Prod' }, apiUrls);
       setDiffData(diffConfigs(sourceJson, destJson));
     } catch (err) {
       console.error('Compare failed:', err);
