@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRightLeft, RefreshCw, CheckCircle2, AlertCircle, Search, Filter, Download, Globe } from 'lucide-react';
 import { diffConfigs, filterNodes, type ConfigNode, type FilterType } from '@/lib/configDiff';
-import JSON5 from 'json5';
+
 
 import g4Data from '/data/plp-md-web-G4.json?url';
 import prodData from '/data/plp-md-web-Production.json?url';
