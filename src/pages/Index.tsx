@@ -4,17 +4,22 @@ import { ArrowRightLeft, RefreshCw, CheckCircle2, AlertCircle, Search, Filter, D
 import { diffConfigs, filterNodes, type ConfigNode, type FilterType } from '@/lib/configDiff';
 import { fetchConfigs } from '@/services/configService';
 
-const SOURCE_OPTIONS = ['G1', 'G4'] as const;
-const DEST_OPTIONS = ['PreProd', 'Prod'] as const;
-
 export default function Index() {
   const [loading, setLoading] = useState(false);
   const [diffData, setDiffData] = useState<ConfigNode[]>([]);
-  const [selection, setSelection] = useState({ source: 'G4', dest: 'Prod' });
   const [filter, setFilter] = useState<FilterType>('all');
   const [search, setSearch] = useState('');
-  const [apiMode, setApiMode] = useState(false);
   const [apiUrls, setApiUrls] = useState({ source: '', dest: '' });
+
+  const sourceLabel = useMemo(() => {
+    if (!apiUrls.source) return 'Source';
+    try { const parts = new URL(apiUrls.source).pathname.split('/'); return parts[parts.length - 1] || 'Source'; } catch { return apiUrls.source.split('/').pop() || 'Source'; }
+  }, [apiUrls.source]);
+
+  const destLabel = useMemo(() => {
+    if (!apiUrls.dest) return 'Destination';
+    try { const parts = new URL(apiUrls.dest).pathname.split('/'); return parts[parts.length - 1] || 'Destination'; } catch { return apiUrls.dest.split('/').pop() || 'Destination'; }
+  }, [apiUrls.dest]);
 
   const filtered = useMemo(() => filterNodes(diffData, filter, search), [diffData, filter, search]);
 
