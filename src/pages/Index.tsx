@@ -95,10 +95,10 @@ export default function Index() {
           <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }}
             className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-4">
-              <StatBadge label="Total" count={stats.total} />
-              <StatBadge label="Match" count={stats.match} color="text-added" />
-              <StatBadge label="Mismatch" count={stats.mismatch} color="text-modified" />
-              <StatBadge label="Missing" count={stats.missing} color="text-removed" />
+              <StatBadge label="Total" count={stats.total} active={filter === 'all'} onClick={() => setFilter('all')} />
+              <StatBadge label="Match" count={stats.match} color="text-added" active={filter === 'match'} onClick={() => setFilter('match')} />
+              <StatBadge label="Mismatch" count={stats.mismatch} color="text-modified" active={filter === 'mismatch'} onClick={() => setFilter('mismatch')} />
+              <StatBadge label="Missing" count={stats.missing} color="text-removed" active={filter === 'missing'} onClick={() => setFilter('missing')} />
             </div>
             <div className="flex items-center gap-3">
               <div className="relative">
@@ -109,14 +109,6 @@ export default function Index() {
                   onChange={e => setSearch(e.target.value)}
                   className="bg-surface border border-border rounded-md pl-9 pr-3 py-1.5 text-sm text-secondary-foreground placeholder:text-muted-foreground w-64 focus:outline-none focus:ring-1 focus:ring-ring"
                 />
-              </div>
-              <div className="flex items-center bg-surface border border-border rounded-md p-0.5">
-                {(['all', 'mismatch', 'match', 'missing'] as FilterType[]).map(f => (
-                  <button key={f} onClick={() => setFilter(f)}
-                    className={`px-3 py-1 text-xs font-medium rounded-md capitalize transition-colors ${filter === f ? 'bg-muted text-secondary-foreground' : 'text-muted-foreground hover:text-foreground'}`}>
-                    {f}
-                  </button>
-                ))}
               </div>
               <button onClick={exportCsv} className="p-2 rounded-md border border-border bg-surface text-muted-foreground hover:text-foreground transition-colors" title="Export CSV">
                 <Download className="w-4 h-4" />
