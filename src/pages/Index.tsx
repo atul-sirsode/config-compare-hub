@@ -1,26 +1,34 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRightLeft, RefreshCw, CheckCircle2, AlertCircle, Search, Filter, Download, Copy } from 'lucide-react';
+import { ArrowRightLeft, RefreshCw, CheckCircle2, AlertCircle, Search, Download, Copy, Filter, ChevronDown } from 'lucide-react';
 import { toast } from 'sonner';
 import { diffConfigs, filterNodes, type ConfigNode, type FilterType } from '@/lib/configDiff';
 import { fetchConfigs } from '@/services/configService';
+import { fetchGitLabProjects, parseSelection, type GitLabProject } from '@/services/gitlabService';
+import {
+  Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue,
+} from '@/components/ui/select';
 
 export default function Index() {
   const [loading, setLoading] = useState(false);
   const [diffData, setDiffData] = useState<ConfigNode[]>([]);
   const [filter, setFilter] = useState<FilterType>('all');
   const [search, setSearch] = useState('');
-  const [apiUrls, setApiUrls] = useState({ source: '', dest: '' });
 
-  const sourceLabel = useMemo(() => {
-    if (!apiUrls.source) return 'Source';
-    try { const parts = new URL(apiUrls.source).pathname.split('/').filter(Boolean); return parts[parts.length - 2] || 'Source'; } catch { const parts = apiUrls.source.split('/').filter(Boolean); return parts[parts.length - 2] || 'Source'; }
-  }, [apiUrls.source]);
+  const [env, setEnv] = useState('NonProd');
+  const [projects, setProjects] = useState<GitLabProject[]>([]);
+  const [sourceSelection, setSourceSelection] = useState('');
+  const [destSelection, setDestSelection] = useState('');
 
-  const destLabel = useMemo(() => {
-    if (!apiUrls.dest) return 'Destination';
-    try { const parts = new URL(apiUrls.dest).pathname.split('/').filter(Boolean); return parts[parts.length - 2] || 'Destination'; } catch { const parts = apiUrls.dest.split('/').filter(Boolean); return parts[parts.length - 2] || 'Destination'; }
-  }, [apiUrls.dest]);
+  useEffect(() => {
+    fetchGitLabProjects(env).then(setProjects);
+  }, [env]);
+
+  const sourceParsed = useMemo(() => parseSelection(sourceSelection, projects), [sourceSelection, projects]);
+  const destParsed = useMemo(() => parseSelection(destSelection, projects), [destSelection, projects]);
+
+  const sourceLabel = sourceParsed ? sourceParsed.fileName.replace(/\.[^.]+$/, '') : 'Source';
+  const destLabel = destParsed ? destParsed.fileName.replace(/\.[^.]+$/, '') : 'Destination';
 
   const filtered = useMemo(() => filterNodes(diffData, filter, search), [diffData, filter, search]);
 
@@ -34,11 +42,11 @@ export default function Index() {
   const handleCompare = async () => {
     setLoading(true);
     try {
-      const mode = (apiUrls.source && apiUrls.dest) ? 'api' : 'local';
-      const { sourceJson, destJson } = await fetchConfigs(mode, { source: 'G4', dest: 'Prod' }, apiUrls);
+      const { sourceJson, destJson } = await fetchConfigs(env, sourceParsed, destParsed);
       setDiffData(diffConfigs(sourceJson, destJson));
     } catch (err) {
       console.error('Compare failed:', err);
+      toast.error('Compare failed');
     }
     setLoading(false);
   };
@@ -67,18 +75,36 @@ export default function Index() {
           </div>
 
           <div className="flex items-center gap-3">
-            <input
-              placeholder="Source config URL (leave empty for mock G4)"
-              value={apiUrls.source}
-              onChange={e => setApiUrls({ ...apiUrls, source: e.target.value })}
-              className="bg-surface border border-border rounded-md px-3 py-1.5 text-sm text-secondary-foreground placeholder:text-muted-foreground w-64 focus:outline-none focus:ring-1 focus:ring-ring"
+            {/* Env Dropdown */}
+            <div className="flex items-center gap-1.5">
+              <label className="text-xs text-muted-foreground font-medium">Env</label>
+              <Select value={env} onValueChange={setEnv}>
+                <SelectTrigger className="w-28 h-8 text-sm bg-surface border-border">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="NonProd">NonProd</SelectItem>
+                  <SelectItem value="Prod">Prod</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Source Application */}
+            <AppDropdown
+              label="Source App"
+              value={sourceSelection}
+              onChange={setSourceSelection}
+              projects={projects}
             />
-            <input
-              placeholder="Dest config URL (leave empty for mock Prod)"
-              value={apiUrls.dest}
-              onChange={e => setApiUrls({ ...apiUrls, dest: e.target.value })}
-              className="bg-surface border border-border rounded-md px-3 py-1.5 text-sm text-secondary-foreground placeholder:text-muted-foreground w-64 focus:outline-none focus:ring-1 focus:ring-ring"
+
+            {/* Destination Application */}
+            <AppDropdown
+              label="Dest App"
+              value={destSelection}
+              onChange={setDestSelection}
+              projects={projects}
             />
+
             <button
               onClick={handleCompare}
               disabled={loading}
@@ -91,7 +117,7 @@ export default function Index() {
       </header>
 
       <main className="max-w-[1600px] mx-auto px-6 py-8">
-        {/* Stats + Filters */}
+        {/* Stats + Search */}
         {diffData.length > 0 && (
           <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }}
             className="flex items-center justify-between mb-6">
@@ -148,6 +174,38 @@ export default function Index() {
   );
 }
 
+/* ---- Sub-components ---- */
+
+function AppDropdown({ label, value, onChange, projects }: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  projects: GitLabProject[];
+}) {
+  return (
+    <div className="flex items-center gap-1.5">
+      <label className="text-xs text-muted-foreground font-medium whitespace-nowrap">{label}</label>
+      <Select value={value} onValueChange={onChange}>
+        <SelectTrigger className="w-52 h-8 text-sm bg-surface border-border">
+          <SelectValue placeholder="Select file..." />
+        </SelectTrigger>
+        <SelectContent>
+          {projects.map(project => (
+            <SelectGroup key={project.id}>
+              <SelectLabel className="text-xs font-semibold text-muted-foreground">{project.name}</SelectLabel>
+              {project.files.map(file => (
+                <SelectItem key={`${project.id}::${file.id}`} value={`${project.id}::${file.id}`}>
+                  {file.name}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  );
+}
+
 function DiffRow({ node, index }: { node: ConfigNode; index: number }) {
   const isMismatch = node.status !== 'match';
 
@@ -194,9 +252,6 @@ function DiffRow({ node, index }: { node: ConfigNode; index: number }) {
   );
 }
 
-
-
-
 function StatBadge({ label, count, color = 'text-foreground', active, onClick }: { label: string; count: number; color?: string; active: boolean; onClick: () => void }) {
   return (
     <button onClick={onClick}
@@ -214,7 +269,7 @@ function EmptyState({ hasData }: { hasData: boolean }) {
         {hasData ? <Filter className="w-5 h-5" /> : <RefreshCw className="w-5 h-5" />}
       </div>
       <p className="text-sm">
-        {hasData ? 'No results match your filter.' : 'Select environments and click Compare to begin audit.'}
+        {hasData ? 'No results match your filter.' : 'Select environment and applications, then click Compare.'}
       </p>
     </div>
   );
