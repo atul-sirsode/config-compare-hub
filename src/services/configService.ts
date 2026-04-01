@@ -1,4 +1,5 @@
 import yaml from 'js-yaml';
+import type { AppSelection } from './gitlabService';
 
 const FALLBACK_FILES: Record<string, string> = {
   G4: '/data/plp-md-web-G4.yml',
@@ -28,26 +29,23 @@ async function fetchWithFallback(url: string, isYaml: boolean, fallbackKey?: str
 }
 
 export async function fetchConfigs(
-  mode: 'local' | 'api',
-  selection: { source: string; dest: string },
-  apiUrls: { source: string; dest: string }
+  env: string,
+  source: AppSelection | null,
+  dest: AppSelection | null,
 ): Promise<{ sourceJson: any; destJson: any }> {
-  if (mode === 'api') {
-    const [sourceJson, destJson] = await Promise.all([
-      fetchWithFallback(apiUrls.source, false, 'G4'),
-      fetchWithFallback(apiUrls.dest, false, 'Prod'),
-    ]);
-    return { sourceJson, destJson };
-  }
-
-  const FILE_MAP: Record<string, string> = {
-    G4: '/data/plp-md-web-G4.yml',
-    Prod: '/data/plp-md-web-Production.yml',
-  };
+  // TODO: When real GitLab API is ready, build URLs from env + project + file
+  // For now, use fallback local files
+  const sourceUrl = source
+    ? `/data/${source.fileName}`
+    : '';
+  const destUrl = dest
+    ? `/data/${dest.fileName}`
+    : '';
 
   const [sourceJson, destJson] = await Promise.all([
-    fetchWithFallback(FILE_MAP[selection.source] || '', true, 'G4'),
-    fetchWithFallback(FILE_MAP[selection.dest] || '', true, 'Prod'),
+    fetchWithFallback(sourceUrl || '', true, 'G4'),
+    fetchWithFallback(destUrl || '', true, 'Prod'),
   ]);
+
   return { sourceJson, destJson };
 }
