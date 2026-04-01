@@ -1,13 +1,16 @@
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRightLeft, RefreshCw, CheckCircle2, AlertCircle, Search, Download, Copy, Filter, ChevronDown } from 'lucide-react';
+import { ArrowRightLeft, RefreshCw, CheckCircle2, AlertCircle, Search, Download, Copy, Filter, ChevronDown, Check, ChevronsUpDown } from 'lucide-react';
 import { toast } from 'sonner';
 import { diffConfigs, filterNodes, type ConfigNode, type FilterType } from '@/lib/configDiff';
 import { fetchConfigs } from '@/services/configService';
 import { fetchGitLabProjects, parseSelection, type GitLabProject } from '@/services/gitlabService';
 import {
-  Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue,
+  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from '@/components/ui/select';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
+import { cn } from '@/lib/utils';
 
 export default function Index() {
   const [loading, setLoading] = useState(false);
@@ -182,26 +185,62 @@ function AppDropdown({ label, value, onChange, projects }: {
   onChange: (v: string) => void;
   projects: GitLabProject[];
 }) {
+  const [open, setOpen] = useState(false);
+
+  const selectedLabel = useMemo(() => {
+    if (!value) return '';
+    const [projectId, fileId] = value.split('::');
+    const project = projects.find(p => p.id === projectId);
+    if (!project) return '';
+    const file = project.files.find(f => f.id === fileId);
+    return file ? file.name : '';
+  }, [value, projects]);
+
   return (
     <div className="flex items-center gap-1.5">
       <label className="text-xs text-muted-foreground font-medium whitespace-nowrap">{label}</label>
-      <Select value={value} onValueChange={onChange}>
-        <SelectTrigger className="w-52 h-8 text-sm bg-surface border-border">
-          <SelectValue placeholder="Select file..." />
-        </SelectTrigger>
-        <SelectContent>
-          {projects.map(project => (
-            <SelectGroup key={project.id}>
-              <SelectLabel className="text-xs font-semibold text-muted-foreground">{project.name}</SelectLabel>
-              {project.files.map(file => (
-                <SelectItem key={`${project.id}::${file.id}`} value={`${project.id}::${file.id}`}>
-                  {file.name}
-                </SelectItem>
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <button
+            role="combobox"
+            aria-expanded={open}
+            className="flex items-center justify-between w-52 h-8 text-sm bg-surface border border-border rounded-md px-3 hover:bg-muted/50 transition-colors"
+          >
+            <span className={cn("truncate", !selectedLabel && "text-muted-foreground")}>
+              {selectedLabel || 'Select file...'}
+            </span>
+            <ChevronsUpDown className="ml-2 h-3.5 w-3.5 shrink-0 opacity-50" />
+          </button>
+        </PopoverTrigger>
+        <PopoverContent className="w-60 p-0" align="start">
+          <Command>
+            <CommandInput placeholder="Search files..." />
+            <CommandList>
+              <CommandEmpty>No file found.</CommandEmpty>
+              {projects.map(project => (
+                <CommandGroup key={project.id} heading={project.name}>
+                  {project.files.map(file => {
+                    const itemValue = `${project.id}::${file.id}`;
+                    return (
+                      <CommandItem
+                        key={itemValue}
+                        value={`${project.name} ${file.name}`}
+                        onSelect={() => {
+                          onChange(itemValue);
+                          setOpen(false);
+                        }}
+                      >
+                        <Check className={cn("mr-2 h-3.5 w-3.5", value === itemValue ? "opacity-100" : "opacity-0")} />
+                        {file.name}
+                      </CommandItem>
+                    );
+                  })}
+                </CommandGroup>
               ))}
-            </SelectGroup>
-          ))}
-        </SelectContent>
-      </Select>
+            </CommandList>
+          </Command>
+        </PopoverContent>
+      </Popover>
     </div>
   );
 }
