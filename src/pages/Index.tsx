@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRightLeft, RefreshCw, CheckCircle2, AlertCircle, Search, Download, Copy, Filter, ChevronDown, Check, ChevronsUpDown } from 'lucide-react';
+import { ArrowRightLeft, RefreshCw, CheckCircle2, AlertCircle, Search, Download, Copy, Filter } from 'lucide-react';
 import { toast } from 'sonner';
 import { diffConfigs, filterNodes, type ConfigNode, type FilterType } from '@/lib/configDiff';
 import { fetchConfigs } from '@/services/configService';
@@ -8,8 +8,7 @@ import { fetchGitLabProjects, parseSelection, type GitLabProject } from '@/servi
 import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from '@/components/ui/select';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
+import { SearchableDropdown, type DropdownGroup } from '@/components/SearchableDropdown';
 import { cn } from '@/lib/utils';
 
 export default function Index() {
