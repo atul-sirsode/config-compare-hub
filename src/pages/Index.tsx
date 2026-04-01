@@ -29,6 +29,12 @@ export default function Index() {
   const sourceParsed = useMemo(() => parseSelection(sourceSelection, projects), [sourceSelection, projects]);
   const destParsed = useMemo(() => parseSelection(destSelection, projects), [destSelection, projects]);
 
+  const projectGroups: DropdownGroup[] = useMemo(() =>
+    projects.map(p => ({
+      heading: p.name,
+      options: p.files.map(f => ({ value: `${p.id}::${f.id}`, label: f.name })),
+    })), [projects]);
+
   const sourceLabel = sourceParsed ? sourceParsed.fileName.replace(/\.[^.]+$/, '') : 'Source';
   const destLabel = destParsed ? destParsed.fileName.replace(/\.[^.]+$/, '') : 'Destination';
 
