@@ -98,19 +98,27 @@ export default function Index() {
             </div>
 
             {/* Source Application */}
-            <AppDropdown
+            <SearchableDropdown
+              id="source-app"
               label="Source App"
               value={sourceSelection}
               onChange={setSourceSelection}
-              projects={projects}
+              groups={projectGroups}
+              placeholder="Select file..."
+              searchPlaceholder="Search files..."
+              emptyMessage="No file found."
             />
 
             {/* Destination Application */}
-            <AppDropdown
+            <SearchableDropdown
+              id="dest-app"
               label="Dest App"
               value={destSelection}
               onChange={setDestSelection}
-              projects={projects}
+              groups={projectGroups}
+              placeholder="Select file..."
+              searchPlaceholder="Search files..."
+              emptyMessage="No file found."
             />
 
             <button
