@@ -120,7 +120,8 @@ export default function Index() {
 
         {/* Diff Table */}
         <div className="rounded-xl border border-border bg-surface/30 overflow-hidden">
-          <div className="grid grid-cols-[1.2fr_1.5fr_1.5fr] border-b border-border bg-surface/50 text-[11px] uppercase tracking-widest font-bold text-muted-foreground">
+          <div className="grid grid-cols-[auto_1.2fr_1.5fr_1.5fr] border-b border-border bg-surface/50 text-[11px] uppercase tracking-widest font-bold text-muted-foreground">
+            <div className="px-2 py-3" />
             <div className="px-6 py-3">Property Key</div>
             <div className="px-6 py-3 border-l border-border flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-added" />
