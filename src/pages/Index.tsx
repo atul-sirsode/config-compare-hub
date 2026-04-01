@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRightLeft, RefreshCw, CheckCircle2, AlertCircle, Search, Download, Copy, Filter, ChevronDown, Check, ChevronsUpDown } from 'lucide-react';
+import { ArrowRightLeft, RefreshCw, CheckCircle2, AlertCircle, Search, Download, Copy, Filter } from 'lucide-react';
 import { toast } from 'sonner';
 import { diffConfigs, filterNodes, type ConfigNode, type FilterType } from '@/lib/configDiff';
 import { fetchConfigs } from '@/services/configService';
@@ -8,8 +8,7 @@ import { fetchGitLabProjects, parseSelection, type GitLabProject } from '@/servi
 import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from '@/components/ui/select';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
+import { SearchableDropdown, type DropdownGroup } from '@/components/SearchableDropdown';
 import { cn } from '@/lib/utils';
 
 export default function Index() {
@@ -29,6 +28,12 @@ export default function Index() {
 
   const sourceParsed = useMemo(() => parseSelection(sourceSelection, projects), [sourceSelection, projects]);
   const destParsed = useMemo(() => parseSelection(destSelection, projects), [destSelection, projects]);
+
+  const projectGroups: DropdownGroup[] = useMemo(() =>
+    projects.map(p => ({
+      heading: p.name,
+      options: p.files.map(f => ({ value: `${p.id}::${f.id}`, label: f.name })),
+    })), [projects]);
 
   const sourceLabel = sourceParsed ? sourceParsed.fileName.replace(/\.[^.]+$/, '') : 'Source';
   const destLabel = destParsed ? destParsed.fileName.replace(/\.[^.]+$/, '') : 'Destination';
@@ -93,19 +98,27 @@ export default function Index() {
             </div>
 
             {/* Source Application */}
-            <AppDropdown
+            <SearchableDropdown
+              id="source-app"
               label="Source App"
               value={sourceSelection}
               onChange={setSourceSelection}
-              projects={projects}
+              groups={projectGroups}
+              placeholder="Select file..."
+              searchPlaceholder="Search files..."
+              emptyMessage="No file found."
             />
 
             {/* Destination Application */}
-            <AppDropdown
+            <SearchableDropdown
+              id="dest-app"
               label="Dest App"
               value={destSelection}
               onChange={setDestSelection}
-              projects={projects}
+              groups={projectGroups}
+              placeholder="Select file..."
+              searchPlaceholder="Search files..."
+              emptyMessage="No file found."
             />
 
             <button
@@ -178,72 +191,6 @@ export default function Index() {
 }
 
 /* ---- Sub-components ---- */
-
-function AppDropdown({ label, value, onChange, projects }: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  projects: GitLabProject[];
-}) {
-  const [open, setOpen] = useState(false);
-
-  const selectedLabel = useMemo(() => {
-    if (!value) return '';
-    const [projectId, fileId] = value.split('::');
-    const project = projects.find(p => p.id === projectId);
-    if (!project) return '';
-    const file = project.files.find(f => f.id === fileId);
-    return file ? file.name : '';
-  }, [value, projects]);
-
-  return (
-    <div className="flex items-center gap-1.5">
-      <label className="text-xs text-muted-foreground font-medium whitespace-nowrap">{label}</label>
-      <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger asChild>
-          <button
-            role="combobox"
-            aria-expanded={open}
-            className="flex items-center justify-between w-52 h-8 text-sm bg-surface border border-border rounded-md px-3 hover:bg-muted/50 transition-colors"
-          >
-            <span className={cn("truncate", !selectedLabel && "text-muted-foreground")}>
-              {selectedLabel || 'Select file...'}
-            </span>
-            <ChevronsUpDown className="ml-2 h-3.5 w-3.5 shrink-0 opacity-50" />
-          </button>
-        </PopoverTrigger>
-        <PopoverContent className="w-60 p-0" align="start">
-          <Command>
-            <CommandInput placeholder="Search files..." />
-            <CommandList>
-              <CommandEmpty>No file found.</CommandEmpty>
-              {projects.map(project => (
-                <CommandGroup key={project.id} heading={project.name}>
-                  {project.files.map(file => {
-                    const itemValue = `${project.id}::${file.id}`;
-                    return (
-                      <CommandItem
-                        key={itemValue}
-                        value={`${project.name} ${file.name}`}
-                        onSelect={() => {
-                          onChange(itemValue);
-                          setOpen(false);
-                        }}
-                      >
-                        <Check className={cn("mr-2 h-3.5 w-3.5", value === itemValue ? "opacity-100" : "opacity-0")} />
-                        {file.name}
-                      </CommandItem>
-                    );
-                  })}
-                </CommandGroup>
-              ))}
-            </CommandList>
-          </Command>
-        </PopoverContent>
-      </Popover>
-    </div>
-  );
-}
 
 function DiffRow({ node, index }: { node: ConfigNode; index: number }) {
   const isMismatch = node.status !== 'match';
