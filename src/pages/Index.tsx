@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRightLeft, RefreshCw, CheckCircle2, AlertCircle, Search, Filter, Download } from 'lucide-react';
+import { ArrowRightLeft, RefreshCw, CheckCircle2, AlertCircle, Search, Filter, Download, Copy } from 'lucide-react';
+import { toast } from 'sonner';
 import { diffConfigs, filterNodes, type ConfigNode, type FilterType } from '@/lib/configDiff';
 import { fetchConfigs } from '@/services/configService';
 
