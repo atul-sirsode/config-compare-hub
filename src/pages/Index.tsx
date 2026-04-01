@@ -158,13 +158,23 @@ function DiffRow({ node, index }: { node: ConfigNode; index: number }) {
   const srcCellClass =
     node.status === 'missing_source' ? 'text-muted-foreground italic' : 'text-foreground';
 
+  const copyRow = () => {
+    const text = `${node.key}: source=${node.sourceValue}, dest=${node.destValue}, status=${node.status}`;
+    navigator.clipboard.writeText(text).then(() => toast.success('Row copied to clipboard'));
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 4 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: Math.min(index * 0.01, 0.5) }}
-      className={`grid grid-cols-[1.2fr_1.5fr_1.5fr] group transition-colors ${isMismatch ? 'bg-modified/[0.02]' : 'hover:bg-muted/30'}`}
+      className={`grid grid-cols-[auto_1.2fr_1.5fr_1.5fr] group transition-colors ${isMismatch ? 'bg-modified/[0.02]' : 'hover:bg-muted/30'}`}
     >
+      <div className="px-2 py-3 flex items-start justify-center">
+        <button onClick={copyRow} className="opacity-0 group-hover:opacity-100 transition-opacity p-1 rounded hover:bg-muted" title="Copy row">
+          <Copy className="w-3.5 h-3.5 text-muted-foreground" />
+        </button>
+      </div>
       <div className="px-6 py-3 flex items-start gap-2 min-w-0">
         <code className="text-sm font-mono text-secondary-foreground break-all">{node.key}</code>
       </div>
